@@ -1,38 +1,372 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* src/App.css */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mogra&family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mogra&family=Montserrat&display=swap");
+body {
+  background-color: #352f44;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #2a2438;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #dbd8e3;
+}
+
+.companyName {
+  margin-left: 2rem;
+  font-size: 25px;
+  color: #dbd8e3;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+}
+
+.headerOptions {
+  display: flex;
+  flex-direction: row;
+  color: #dbd8e3;
+  margin-right: 3rem;
+  gap: 20px;
+}
+
+.headeroptionText {
+  font-size: 19px;
+  color: #dbd8e3;
+  font-family: "Mogra", cursive;
+}
+.headeroptionText:hover {
+  cursor: pointer;
+  color: #5c5470;
+}
+h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* src/components/CustomerDetails.css */
+.CustomerDetails {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.DetailsHeader {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.DetailName,
+.DetailContact,
+.DetailStatus,
+.DetailMeasurements {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.MeasurementField {
+  margin: 10px 0;
+}
+
+.MeasurementLabel {
+  display: inline-block;
+  width: 70px;
+  font-weight: bold;
+}
+
+.MeasurementInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.CompleteButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.CompleteButton:hover {
+  background-color: #0056b3;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mainImage {
+  width: 100%;
+  height: 15rem;
+}
+
+.homePage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.description {
+  height: 130px;
+  width: 80%;
+  background-color: #dbd8e3;
+  border-bottom-left-radius: 50rem;
+  border-bottom-right-radius: 50rem;
+  border-top-right-radius: 50rem;
+  border-top-left-radius: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  align-self: center;
+}
+
+.cardBackground {
+  background-color: #5c5470;
+  cursor: pointer;
+}
+
+.cardText {
+  color: #dbd8e3;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.cardButton {
+  background-color: #dbd8e3;
+  border-color: #dbd8e3;
+  color: #2a2438;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.cardButton:hover {
+  background-color: #2a2438;
+  color: #dbd8e3;
+  border-color: #2a2438;
+  font-weight: bold;
+}
+
+.descriptionText {
+  /* color:  #dbd8e3; */
+  color: #2a2438;
+  font-weight: 400;
+  font-size: 16px;
+  width: 80%;
+  font-family: "Mogra", cursive;
+}
+
+.adjustScreen {
+  display: flex;
+  flex-direction: row;
+}
+
+.getStartedDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  width: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.ImageDiv {
+  height: 100vh;
+  width: 50%;
+  background-color: #dbd8e3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.marginTop {
+  margin-top: 2rem;
+}
+
+.mainImage {
+  height: 100%;
+  width: 100%;
+}
+
+.getStartedDivDescription {
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.getStartedDivDescriptionText {
+  color: #dbd8e3;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.marginTopExtra {
+  margin-top: 5rem;
+}
+
+.smallMarinTop {
+  margin-top: 1rem;
+}
+
+/* styles.css */
+
+.customModalHeader {
+  background-color: #2a2438;
+  border: none;
+  border-bottom: 1px solid #dbd8e3;
+}
+
+.customModalTitle {
+  color: #dbd8e3;
+  font-family: "Dancing Script", cursive;
+}
+
+.customModalBody {
+  background-color: #352f44;
+  padding: 20px;
+  color: #dbd8e3;
+  font-family: "Montserrat", sans-serif;
+}
+
+.customModalFooter {
+  background-color: #2a2438;
+  border: none;
+}
+
+.customCloseButton {
+  background-color: #dbd8e3;
+  color: #2a2438;
+  font-family: "Montserrat", sans-serif;
+}
+
+.customSaveButton {
+  background-color: #dbd8e3;
+  color: #2a2438;
+  font-family: "Montserrat", sans-serif;
+}
+
+.LabelandField {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 370px;
+}
+
+.customerDetailText {
+  font-size: 19px;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #2a2438;
+  padding: 10px;
+}
+
+.marginBottom {
+  margin-top: 1rem;
+}
+
+.row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.col{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.adjustCustomerListScreen {
+  display: flex;
+  flex-direction: column;
+}
+
+.allcustomerListText {
+  color: #dbd8e3;
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding: 10px;
+}
+
+.table-container {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.custom-table {
+  margin: 0 auto;
+}
+
+.table-header {
+  margin-bottom: 1rem;
+}
+
+.header-cell {
+  color: #dbd8e3;
+  background-color: #2a2438;
+  padding: 8px 12px;
+  font-size: 18px;
+}
+
+.body-cell {
+  font-size: 16px;
+  color: #dbd8e3;
+  background-color: #5c5470;
+  padding: 8px 12px;
+}
+
+.body-cell:hover {
+  cursor: pointer;
+  background-color: #352f44;
+  color: #dbd8e3;
+}
+
+.CompleteStatus {
+  color: greenyellow;
+  font-weight: bold;
+}
+
+.PendingStatus {
+  color: lightcoral;
+  font-weight: bold;
 }
