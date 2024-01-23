@@ -1,6 +1,7 @@
 import React from "react";
 import mainImage from "../assets/mainImage.jpg";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   return (
@@ -19,7 +20,9 @@ export default function WelcomePage() {
           </text>
         </div>
         <Button variant="primary" className="cardButton marginTopExtra">
-          Get Started
+          <Link to="/Home" className="GetStartedLink">
+            Get Started
+          </Link>
         </Button>
       </div>
       <div className="ImageDiv">

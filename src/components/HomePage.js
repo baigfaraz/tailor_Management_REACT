@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import MainCard from "./Card";
 import imageSrc from "../assets/measure.png";
 import customerImage from "../assets/customer.png";
@@ -17,15 +17,11 @@ export default function HomePage() {
     setShowModal(false);
   };
 
-  const addCustomer = () =>{
+  const addCustomer = () => {
     handleOpenModal();
-  }
-  const showAllCustomers = () =>{
+  };
 
-  }
-  const addPayment = () =>{
-
-  }
+  const searchCustomer = () => {};
   return (
     <>
       <Header />
@@ -45,18 +41,23 @@ export default function HomePage() {
             button="Add Customer"
             functionName={addCustomer}
           />
-          <DetailModal show={showModal} handleClose={handleCloseModal} modalClassName="customModal"/>
+          <DetailModal
+            show={showModal}
+            handleClose={handleCloseModal}
+            modalClassName="customModal"
+          />
           <MainCard
             image={customerImage}
             title="Check Customers"
             button="All Customers"
-            functionName={showAllCustomers}
+            path="/Home/AllCustomer"
           />
           <MainCard
             image={paymentImage}
-            title="Add payments"
-            button="Payment"
-            functionName={addPayment}
+            title="Search Customer"
+            button="Search"
+            functionName={searchCustomer}
+            path="/Home/Search"
           />
         </div>
       </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
-export default function MainCard({ image, title, button , functionName}) {
-
-  
+export default function MainCard({ image, title, button, functionName , path}) {
   return (
     <div>
       <Card
@@ -15,7 +14,13 @@ export default function MainCard({ image, title, button , functionName}) {
         <Card.Body>
           <Card.Title className="cardText">{title}</Card.Title>
 
-          <Button variant="primary" className="cardButton" onClick={functionName}>{button}</Button>
+          <Button
+            variant="primary"
+            className="cardButton"
+            onClick={functionName}
+          >
+            <Link to={path} className="GetStartedLink">{button}</Link>
+          </Button>
         </Card.Body>
       </Card>
     </div>
