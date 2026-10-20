@@ -64,3 +64,21 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: BE `test/backup.test.js` (round trip identical incl. ids/dates/booleans; pruning).
 - Verified: BE 43/43 ✅ lint ✅. Restore drill on 2026-10-20: backup of Atlas `tailor` (2 customers, read-only) restored into a throwaway in-memory database → 2 documents; Atlas was not written.
 - Side effects / follow-ups: scheduling (daily cron/launchd on the shop PC) and copying to a second location are documented in ARCH-009 README. Backup files contain customer data; keep them private.
+
+### SEC-002: JSON errors without stack traces
+
+- Branch / commit: BE `phase-2/sec-002-json-errors`
+- Root cause: each handler swallowed errors in its own `try/catch` (6 lint errors); thrown validation errors reached Express's default HTML handler with stack traces.
+- Fix: removed the redundant `try/catch`; `asyncHandler` forwards to `src/middleware/errors.js` (4xx → `{ error: message }`, others logged + generic 500); unknown `/api` paths → JSON 404. ESLint `argsIgnorePattern: "^_"` for the Express error-handler signature. Lint now blocking in BE CI.
+- Tests added: missing-fields test asserts JSON; 500 asserts generic JSON with no stack/paths; unknown API path 404.
+- Verified: BE 44/44 ✅ lint 0 errors ✅.
+- Side effects / follow-ups: non-numeric id still 500 (SEC-003).
+
+### ARCH-005 (+ ARCH-004, TEST-002, K-009): Create React App → Vite + Vitest
+
+- Branch / commit: FE `phase-2/arch-005-vite` (2 commits: migration, lint fixes)
+- Root cause: CRA unmaintained; Jest could not load ESM axios; ~95 audit findings from CRA tooling.
+- Fix: Vite 5 (output `build/`, dev proxy `/api` → 5000, port 3000), Vitest + Testing Library + jsdom, ESLint 9 flat config (react, react-hooks). `.js` → `.jsx`; `VITE_API_BASE`. Removed `react-scripts`, `@mui/material`, `@emotion/react`, `@emotion/styled`, `web-vitals`, `serve` (all unused after the move). Lint fixes: `class` → `className` (K-009), unused `React` imports, escaped quotes.
+- Tests added: `DeviceGate.test.jsx` (4) replaces the stale CRA `App.test.js`. Unit tests blocking in CI.
+- Verified: lint ✅ unit 4/4 ✅ build 1.9 s (was 16.4 s) ✅ E2E 44/44 incl. visual (identical screenshots) ✅; dev server + proxy checked.
+- Side effects / follow-ups: done earlier than the skill's default order (before dependency step) so the reliability fixes get component tests. The owner's running CRA dev server must be restarted with `npm install && npm start` (now Vite).
