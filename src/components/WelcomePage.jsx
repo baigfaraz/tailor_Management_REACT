@@ -1,4 +1,3 @@
-import React from "react";
 import mainImage from "../assets/mainImage.jpg";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -16,7 +15,8 @@ export default function WelcomePage() {
           </text>
           <br />
           <text className="getStartedDivDescriptionText smallMarinTop">
-            Click on 'Get Started' to join our Platform by login with Google!
+            Click on &apos;Get Started&apos; to join our Platform by login with
+            Google!
           </text>
         </div>
         <Button variant="primary" className="cardButton marginTopExtra">

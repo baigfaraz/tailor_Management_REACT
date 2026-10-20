@@ -1,5 +1,5 @@
 import Header from "./Header";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SearchBar from "./Searchbar";
 import ShowDetailModal from "./ShowDetailModal";

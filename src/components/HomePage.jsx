@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import MainCard from "./Card";
 import imageSrc from "../assets/measure.png";
 import customerImage from "../assets/customer.png";
@@ -31,7 +31,7 @@ export default function HomePage() {
           <text className="descriptionText">
             Our Platform give ease for tailors, Here you can manage every
             details of customer such like measurements , payments and status of
-            orders. Let's start to try it for free.
+            orders. Let&apos;s start to try it for free.
           </text>
         </div>
         <div className="cards">

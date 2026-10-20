@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import ShowDetailModal from "./ShowDetailModal";
 import { deleteCustomer, getCustomer, listCustomers } from "../api/customers";
@@ -73,23 +73,23 @@ const AllCustomer = () => {
       ) : (
         ""
       )}
-      <div class="table-container">
+      <div className="table-container">
         {someData.length > 0 ? (
-          <table class="custom-table">
-            <thead class="table-header">
+          <table className="custom-table">
+            <thead className="table-header">
               <tr>
-                <th class="header-cell">Customer No</th>
-                <th class="header-cell">Name</th>
-                <th class="header-cell">Contact No</th>
-                <th class="header-cell">Order Status</th>
-                <th class="header-cell">Payment Status</th>
-                <th class="header-cell">{""}</th>
+                <th className="header-cell">Customer No</th>
+                <th className="header-cell">Name</th>
+                <th className="header-cell">Contact No</th>
+                <th className="header-cell">Order Status</th>
+                <th className="header-cell">Payment Status</th>
+                <th className="header-cell">{""}</th>
               </tr>
             </thead>
 
             <tbody>
               {someData.map((customer) => (
-                <tr key={customer.customer_id} class="body-cell">
+                <tr key={customer.customer_id} className="body-cell">
                   <td
                     onClick={() => {
                       customerDetail(customer.customer_id);

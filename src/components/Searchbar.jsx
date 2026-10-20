@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 
 function SearchBar({ onSearch }) {
