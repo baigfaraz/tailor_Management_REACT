@@ -28,11 +28,18 @@ function customerInput(overrides = {}) {
   };
 }
 
+// PIN of the E2E server (scripts/e2e-server.js in the server repo).
+const SHOP_PIN = "2468";
+const SESSION = `http://localhost:${API_PORT}/api/session`;
+
 const test = base.test.extend({
+  // Set to false in a spec to start on a device that has not entered the PIN.
+  unlocked: [true, { option: true }],
   api: async ({ request }, use) => {
     const health = await request.get(`http://127.0.0.1:${CONTROL_PORT}/health`);
     base.expect((await health.json()).e2e).toBe(true);
     await request.post(`http://127.0.0.1:${CONTROL_PORT}/reset`);
+    await request.post(SESSION, { data: { pin: SHOP_PIN } });
 
     await use({
       createCustomer: async (overrides) => {
@@ -44,12 +51,17 @@ const test = base.test.extend({
       getCustomer: async (id) => (await request.get(`${API}/${id}`)).json(),
     });
   },
-  page: async ({ page, api }, use) => {
+  page: async ({ page, api, unlocked }, use) => {
     void api; // ensure the database is reset before the page loads
     // Defense in depth: nothing may reach the dev API on port 5000 (real Atlas data).
     await page.route("http://localhost:5000/**", (route) => route.abort());
+    if (unlocked) {
+      // page.request shares the browser context's cookies.
+      const res = await page.request.post(SESSION, { data: { pin: SHOP_PIN } });
+      base.expect(res.status()).toBe(200);
+    }
     await use(page);
   },
 });
 
-module.exports = { test, expect: base.expect, customerInput };
+module.exports = { test, expect: base.expect, customerInput, SHOP_PIN };

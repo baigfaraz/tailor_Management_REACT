@@ -6,10 +6,11 @@ import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import AllCustomer from "./components/AllCustomer.js";
 import SearchScreen from "./components/SearchScreen";
+import DeviceGate from "./components/DeviceGate";
 
 function App() {
   return (
-    <>
+    <DeviceGate>
       <Router>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
@@ -18,7 +19,7 @@ function App() {
           <Route path="/Home/Search" element={<SearchScreen />} />
         </Routes>
       </Router>
-    </>
+    </DeviceGate>
   );
 }
 

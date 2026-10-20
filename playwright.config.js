@@ -43,7 +43,7 @@ module.exports = defineConfig({
     cwd: SERVER_DIR,
     url: `http://127.0.0.1:${CONTROL_PORT}/health`,
     env: {
-      PORT: String(APP_PORT),
+      E2E_PORT: String(APP_PORT),
       E2E_CONTROL_PORT: String(CONTROL_PORT),
       WEB_DIST: path.resolve(__dirname, "build"),
     },

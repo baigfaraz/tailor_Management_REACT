@@ -46,3 +46,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: BE 5 tests for static serving and SPA fallback (`test/web.test.js`). FE E2E now runs production-like: API serves the build on one origin; the 5000→5100 reroute and port-5000 guard were removed, and any request to port 5000 is aborted as a defense.
 - Verified: BE 23/23 ✅ lint (new files) ✅; FE lint ✅ build ✅ E2E 40/40 incl. visual ✅; dev proxy checked (`/api` via port 3001 → 5000 returned 200).
 - Side effects / follow-ups: dev API must run on port 5000 for `npm start` (unchanged). E2E can now run while the dev API is up.
+
+### SEC-001: Shop PIN per device (+ env validation)
+
+- Branch / commit: BE `phase-2/sec-001-shop-pin`, FE `phase-2/sec-001-pin-screen`
+- Root cause: no access control and `cors()` allowing every origin; anyone on the shop Wi-Fi could read or delete all customers.
+- Fix: BE `src/middleware/deviceAuth.js`: `POST /api/session` with the shop PIN sets a signed httpOnly, SameSite=Strict cookie (1 year); `/api/customerDetail/*` returns 401 without it; 5 wrong PINs per IP → 429 for 15 min; signing key includes the PIN, so a PIN change signs out every device; `DELETE /api/session` forgets a device. CORS limited to `CORS_ORIGINS` (default none). `src/config/env.js` validates `MONGODB_URI`, `SHOP_PIN` (4–8 digits), `SESSION_SECRET` (≥32 chars) at start-up. Only `src/server.js` loads `.env`. FE `DeviceGate` shows a PIN screen (existing styles) until unlocked; any 401 re-locks.
+- Tests added: BE `test/session.test.js` (15: 401 on all 6 endpoints, wrong/missing PIN, cookie flags, forget device, forged cookie, PIN change, lockout, CORS allowlist), `test/env.test.js` (3); CORS characterization test flipped. FE E2E `device-pin.spec.js` (unlock + persists after reload; wrong PIN error); all E2E fixtures unlock via the API.
+- Verified: BE 41/41 ✅ lint ✅; FE lint ✅ build ✅ E2E 44/44 incl. visual ✅ (desktop + tablet); real `.env` start-up ✅; missing env → clear error ✅.
+- Side effects / follow-ups: the owner's local `.env` got `SHOP_PIN=1234` (temporary, owner to change) and a random `SESSION_SECRET`. The E2E server briefly read the dev `.env` PIN while developing this; fixed by removing dotenv from `db.js` and fixing E2E values.
