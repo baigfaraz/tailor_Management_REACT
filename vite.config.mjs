@@ -1,8 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   server: {
     port: 3000,
     // Dev: the API runs on port 5000 (backend `npm run dev`); same-origin /api.

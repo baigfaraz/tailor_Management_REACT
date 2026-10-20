@@ -1,0 +1,83 @@
+/*
+ * Primitive tokens: the raw palette and scales (Phase 3, UI-001).
+ * Components never use these directly; they use the semantic tokens in
+ * theme.css (bg-surface, text-muted, …). A dark theme remaps the semantic
+ * layer only. Contrast ratios: docs/improvement/phase-3/tokens.md.
+ */
+:root {
+  /* Ink: warm near-black to warm off-white neutrals */
+  --p-ink-950: #191a1b;
+  --p-ink-900: #2c2d30;
+  --p-ink-800: #3f3f46;
+  --p-ink-700: #4e5154;
+  --p-ink-600: #5e5a5a;
+  --p-ink-550: #6f6a65;
+  --p-ink-500: #8a847e;
+  --p-ink-400: #beb9b3;
+  --p-ink-300: #d8d3ce;
+  --p-ink-200: #ece6e1;
+  --p-ink-100: #f6f1ee;
+  --p-ink-50: #faf7f5;
+  --p-white: #ffffff;
+
+  /* Warm shell (canvas) */
+  --p-shell-50: #fdf1ef;
+  --p-shell-100: #f9e4df;
+
+  /* Electric lime (brand spark: only on dark fills or as fills under ink) */
+  --p-lime-400: #d4ff4c;
+  --p-lime-100: #eefbc7;
+  --p-lime-600: #6b8a00;
+  --p-lime-900: #3a4a00;
+
+  /* Lavender (outlines, focus) */
+  --p-lavender-50: #f3f0fb;
+  --p-lavender-200: #cbc2ea;
+  --p-lavender-600: #6b5bb0;
+
+  /* Pastels */
+  --p-blossom-100: #f5ddee;
+  --p-blossom-800: #6b2d5c;
+  --p-lilac-100: #d7e5fe;
+  --p-blue-900: #1e3a8a;
+  --p-plum-800: #4c305a;
+
+  /* Amber (pending) */
+  --p-amber-100: #fdecc8;
+  --p-amber-600: #b7791f;
+  --p-amber-800: #6b4400;
+
+  /* Red (danger) */
+  --p-red-50: #fef3f2;
+  --p-red-200: #fecdca;
+  --p-red-600: #b42318;
+  --p-red-700: #912018;
+
+  /* Control heights: md/lg meet the 44px touch target */
+  --control-sm: 2.25rem;
+  --control-md: 2.75rem;
+  --control-lg: 3rem;
+
+  /* Layout */
+  --sidebar-width: 15rem;
+  --content-max: 75rem;
+
+  /* Layering (use via z-(--z-…)) */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-header: 30;
+  --z-overlay: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-toast: 70;
+  --z-tooltip: 80;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.3, 0, 1, 1);
+}

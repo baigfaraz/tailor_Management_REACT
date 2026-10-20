@@ -1,0 +1,21 @@
+/*
+ * Style entry point. Layer order during the Phase 3 migration: legacy styles
+ * (Bootstrap + old App.css) sit above the new base layer so un-migrated
+ * screens keep their look, and below components/utilities so new components
+ * always win. The legacy layer is deleted when migration ends.
+ */
+@layer theme, base, legacy, components, utilities;
+
+@import "bootstrap/dist/css/bootstrap.min.css" layer(legacy);
+@import "../App.css" layer(legacy);
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import "@fontsource-variable/lexend/index.css";
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+
+@import "./tokens.css";
+@import "./theme.css";
+@import "./base.css";

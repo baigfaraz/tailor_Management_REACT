@@ -1,0 +1,26 @@
+text on surface                    #191a1b #ffffff 17.43
+text on bg (shell)                 #191a1b #fdf1ef 15.77
+muted on surface                   #5e5a5a #ffffff 6.80
+muted on bg                        #5e5a5a #fdf1ef 6.16
+muted on subtle                    #5e5a5a #f6f1ee 6.07
+placeholder #6f6a65 on surface     #6f6a65 #ffffff 5.35
+lime on ink (primary btn)          #d4ff4c #191a1b 15.11
+white on ink                       #ffffff #191a1b 17.43
+input border on surface            #8a847e #ffffff 3.70
+input border on bg                 #8a847e #fdf1ef 3.34
+focus ring on surface              #6b5bb0 #ffffff 5.60
+focus ring on bg                   #6b5bb0 #fdf1ef 5.07
+focus ring on ink                  #6b5bb0 #191a1b 3.11
+lavender outline on surface        #cbc2ea #ffffff 1.69
+success text on bg                 #3a4a00 #eefbc7 8.92
+warning text on bg                 #6b4400 #fdecc8 7.34
+accent(pink) text on bg            #6b2d5c #f5ddee 7.64
+danger text on surface             #b42318 #ffffff 6.57
+danger text on danger-bg           #b42318 #fef3f2 6.05
+info text on bg                    #1e3a8a #d7e5fe 8.15
+white on danger btn                #ffffff #b42318 6.57
+muted on ink (sidebar n/a)         #beb9b3 #191a1b 8.95
+disabled text #8a847e on subtle    #8a847e #f6f1ee 3.30
+ink on lime                        #191a1b #d4ff4c 15.11
+danger border on surface           #b42318 #ffffff 6.57
+checkbox border #8a847e            #8a847e #ffffff 3.70
