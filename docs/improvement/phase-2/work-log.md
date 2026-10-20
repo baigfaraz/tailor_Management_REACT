@@ -91,3 +91,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: component tests `AllCustomer.test.jsx` (5), `SearchScreen.test.jsx` (4), `ShowDetailModal.test.jsx` (3); 9 failed on the old code. E2E: UX-003 test flipped to "error with Retry", new "searches when Enter is pressed".
 - Verified: lint ✅ unit 16/16 ✅ build ✅ E2E 46/46 incl. visual ✅ (desktop + tablet).
 - Side effects / follow-ups: messages use existing styles; Phase 3 designs proper Empty/Error/Loading components (UI-003).
+
+### UX-004a (+ UX-010): Add-customer feedback and double-submit guard
+
+- Branch / commit: FE `phase-2/ux-004a-add-feedback`
+- Root cause: `DetailModal` only logged API errors; on success it cleared the form but left the big modal open with no message; Confirm stayed clickable during the request.
+- Fix: the confirm dialog shows the server's error and keeps everything typed; Confirm is disabled and reads "Saving…" while saving; on success the form closes and the dashboard shows "Customer added: <name> (Customer No N)".
+- Tests added: `DetailModal.test.jsx` (3), `HomePage.test.jsx` (1) — all 4 failed on the old code. E2E: add flow asserts the success message; empty-form test flipped to show the error.
+- Verified: lint ✅ unit 20/20 ✅ build ✅ E2E 46/46 incl. visual ✅.
+- Side effects / follow-ups: inline field validation and numeric inputs are UX-004b (Phase 5).

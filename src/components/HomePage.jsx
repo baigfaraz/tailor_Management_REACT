@@ -5,9 +5,11 @@ import customerImage from "../assets/customer.png";
 import paymentImage from "../assets/payment.png";
 import Header from "./Header";
 import DetailModal from "./DetailModal";
+import Alert from "react-bootstrap/Alert";
 
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false);
+  const [savedCustomer, setSavedCustomer] = useState(null);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -18,6 +20,7 @@ export default function HomePage() {
   };
 
   const addCustomer = () => {
+    setSavedCustomer(null);
     handleOpenModal();
   };
 
@@ -27,6 +30,18 @@ export default function HomePage() {
       <Header />
 
       <div className="homePage">
+        {savedCustomer && (
+          <Alert
+            variant="success"
+            role="status"
+            className="align-self-center mt-3 mb-0"
+            dismissible
+            onClose={() => setSavedCustomer(null)}
+          >
+            Customer added: {savedCustomer.customer_name} (Customer No{" "}
+            {savedCustomer.customer_id})
+          </Alert>
+        )}
         <div className="description">
           <text className="descriptionText">
             Our Platform give ease for tailors, Here you can manage every
@@ -45,6 +60,7 @@ export default function HomePage() {
             show={showModal}
             handleClose={handleCloseModal}
             modalClassName="customModal"
+            onSaved={setSavedCustomer}
           />
           <MainCard
             image={customerImage}

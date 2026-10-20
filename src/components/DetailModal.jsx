@@ -5,8 +5,15 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { createCustomer } from "../api/customers";
+import { errorMessage } from "../api/errors";
 
-export default function DetailModal({ show, handleClose, modalClassName }) {
+// onSaved(customer) is called after a successful save (UX-004a).
+export default function DetailModal({
+  show,
+  handleClose,
+  modalClassName,
+  onSaved,
+}) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [waist, setWaist] = useState("");
@@ -25,7 +32,13 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
   const [noOfSuits, setNoOfSuits] = useState("");
   const [paymentStatus, setPaymentStatus] = useState("Pending");
 
-  const handleCloseSmallModal = () => setShowSmallModal(false);
+  const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  const handleCloseSmallModal = () => {
+    setShowSmallModal(false);
+    setSaveError("");
+  };
   const handleShowSmallModal = () => setShowSmallModal(true);
 
   const handlePaymentStatus = (event) => {
@@ -44,10 +57,14 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
     setNeckType(event.target.value);
   };
 
+  // Keeps everything typed if saving fails; the error shows in the confirm dialog.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (saving) return;
+    setSaving(true);
+    setSaveError("");
     try {
-      await createCustomer({
+      const created = await createCustomer({
         customer_name: name,
         customer_contact: contact,
         customer_waist: waist,
@@ -82,8 +99,12 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
       setUpperPocket(false);
       setPaymentStatus("Pending");
       setNoOfSuits("");
+      handleClose();
+      onSaved?.(created);
     } catch (error) {
-      console.error("Error posting data:", error);
+      setSaveError(errorMessage(error, "Could not save the customer."));
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -387,6 +408,11 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
         </Modal.Header>
         <Modal.Body className="customModalBody">
           Click on confirm if you want to add!
+          {saveError && (
+            <p role="alert" className="dataNotFound">
+              {saveError}
+            </p>
+          )}
         </Modal.Body>
         <Modal.Footer className="customModalFooter">
           <Button
@@ -396,8 +422,13 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
           >
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit} className="button">
-            Confirm
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            className="button"
+            disabled={saving}
+          >
+            {saving ? "Saving…" : "Confirm"}
           </Button>
         </Modal.Footer>
       </Modal>

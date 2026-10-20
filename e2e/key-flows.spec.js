@@ -50,7 +50,10 @@ test.describe("1. Add customer", () => {
     await page.getByRole("button", { name: "Add Detail" }).click();
     await page.getByRole("button", { name: "Confirm" }).click();
 
-    await expect.poll(async () => (await api.listCustomers()).length).toBe(1);
+    await expect(page.getByRole("status")).toHaveText(
+      /Customer added: Bilal Ahmed \(Customer No 1\)/,
+    );
+    await expect(page.getByRole("dialog")).toHaveCount(0);
     const [created] = await api.listCustomers();
     expect(created.customer_name).toBe("Bilal Ahmed");
 
@@ -58,7 +61,7 @@ test.describe("1. Add customer", () => {
     await expect(customerRow(page, "Bilal Ahmed")).toBeVisible();
   });
 
-  test("current bug (UX-004a): empty form creates nothing and shows no message", async ({
+  test("an incomplete form shows the error and keeps the form open (UX-004a)", async ({
     page,
     api,
   }) => {
@@ -71,7 +74,10 @@ test.describe("1. Add customer", () => {
 
     expect((await response).status()).toBe(400);
     expect(await api.listCustomers()).toHaveLength(0);
-    await expect(page.getByText(/please add all details/i)).toHaveCount(0);
+    await expect(page.getByRole("alert")).toHaveText(
+      "Please add all details. Thankyou!",
+    );
+    await expect(page.getByLabel("Name", { exact: true })).toBeVisible();
   });
 });
 
