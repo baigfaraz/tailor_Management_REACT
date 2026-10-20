@@ -100,3 +100,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: `DetailModal.test.jsx` (3), `HomePage.test.jsx` (1) — all 4 failed on the old code. E2E: add flow asserts the success message; empty-form test flipped to show the error.
 - Verified: lint ✅ unit 20/20 ✅ build ✅ E2E 46/46 incl. visual ✅.
 - Side effects / follow-ups: inline field validation and numeric inputs are UX-004b (Phase 5).
+
+### Reliability baseline: error boundary, 404 page, request timeout
+
+- Branch / commit: FE `phase-2/rel-error-boundary-404`
+- Root cause: no error boundary (a render error blanks the app), no catch-all route (unknown URLs blank, UX-008), no request timeout.
+- Fix: `ErrorBoundary` around the app (message + Reload); `NotFound` route `*` with a link home; API client timeout 15 s (ends in the offline message). Minimal existing styles; UX-008 (Phase 3) designs the AppShell and 404 properly.
+- Tests added: `ErrorBoundary.test.jsx` (2), `NotFound.test.jsx` (1), `client.test.js` (3); E2E unknown-route test flipped to the not-found page.
+- Verified: lint ✅ unit 26/26 ✅ build ✅ E2E 46/46 incl. visual ✅.
+- Side effects / follow-ups: no error-monitoring service (owner did not ask for one; server logs errors, SEC-007).

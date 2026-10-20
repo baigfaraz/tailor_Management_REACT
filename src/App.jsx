@@ -6,19 +6,24 @@ import HomePage from "./components/HomePage";
 import AllCustomer from "./components/AllCustomer";
 import SearchScreen from "./components/SearchScreen";
 import DeviceGate from "./components/DeviceGate";
+import ErrorBoundary from "./components/ErrorBoundary";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    <DeviceGate>
-      <Router>
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/Home" element={<HomePage />} />
-          <Route path="/Home/AllCustomer" element={<AllCustomer />} />
-          <Route path="/Home/Search" element={<SearchScreen />} />
-        </Routes>
-      </Router>
-    </DeviceGate>
+    <ErrorBoundary>
+      <DeviceGate>
+        <Router>
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/Home" element={<HomePage />} />
+            <Route path="/Home/AllCustomer" element={<AllCustomer />} />
+            <Route path="/Home/Search" element={<SearchScreen />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </DeviceGate>
+    </ErrorBoundary>
   );
 }
 

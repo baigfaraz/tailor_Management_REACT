@@ -298,10 +298,14 @@ test.describe("Navigation", () => {
     await expect(page).toHaveURL(/\/Home\/AllCustomer$/);
   });
 
-  test("current bug (UX-008): unknown routes render a blank page", async ({
+  test("unknown routes show a not-found page with a way home", async ({
     page,
   }) => {
     await page.goto("/does-not-exist");
-    await expect(page.locator("#root")).toBeEmpty();
+    await expect(
+      page.getByRole("heading", { name: "Page not found" }),
+    ).toBeVisible();
+    await page.getByRole("link", { name: "Go to Home" }).click();
+    await expect(page).toHaveURL(/\/Home$/);
   });
 });

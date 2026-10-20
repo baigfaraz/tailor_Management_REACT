@@ -7,6 +7,8 @@ import axios from "axios";
 const client = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASE || ""}/api`,
   withCredentials: true,
+  // A dead Wi-Fi link should end in an error message, not an endless wait.
+  timeout: 15000,
 });
 
 export const DEVICE_LOCKED_EVENT = "tailor:device-locked";
