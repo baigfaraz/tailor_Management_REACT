@@ -1,0 +1,6 @@
+node_modules
+build
+coverage
+package-lock.json
+docs/improvement/phase-0
+docs/improvement/phase-1
