@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function MainCard({ image, title, button, functionName, path }) {
   return (

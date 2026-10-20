@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Header from "./Header";
 
 // Minimal 404 with existing styles; Phase 3 (UX-008) designs it properly.

@@ -1,6 +1,6 @@
 import mainImage from "../assets/mainImage.jpg";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function WelcomePage() {
   return (
