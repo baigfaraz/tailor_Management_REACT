@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SearchBar from "./Searchbar";
 import ShowDetailModal from "./ShowDetailModal";
-import axios from "axios";
+import { getCustomer } from "../api/customers";
 
 export default function SearchScreen() {
   const [customerData, setCustomerData] = useState({});
@@ -12,11 +12,7 @@ export default function SearchScreen() {
 
   const getCustomerDetail = async (id) => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/customerDetail/${id}`,
-      );
-
-      setCustomerData(response.data);
+      setCustomerData(await getCustomer(id));
       handleOpenModal();
       setDataNotFound(false);
     } catch (error) {

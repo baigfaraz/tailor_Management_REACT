@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import axios from "axios";
+import { createCustomer } from "../api/customers";
 
 export default function DetailModal({ show, handleClose, modalClassName }) {
   const [name, setName] = useState("");
@@ -47,33 +47,24 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:5000/api/customerDetail",
-        {
-          customer_name: name,
-          customer_contact: contact,
-          customer_waist: waist,
-          customer_bust: bust,
-          customer_upperArm: upperArm,
-          customer_neckToSleeve: neckToSleeve,
-          customer_back: back,
-          customer_neckToShoulder: neckToShoulder,
-          customer_legLength: legLength,
-          customer_upperPocket: upperPocket,
-          customer_dressDesign: dressType,
-          customer_neckStyle: neckType,
-          customer_orderPrice: price,
-          customer_orderStatus: orderStatus,
-          customer_paymentStatus: paymentStatus,
-          customer_noOfSuits: noOfSuits,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-      console.log(name);
+      await createCustomer({
+        customer_name: name,
+        customer_contact: contact,
+        customer_waist: waist,
+        customer_bust: bust,
+        customer_upperArm: upperArm,
+        customer_neckToSleeve: neckToSleeve,
+        customer_back: back,
+        customer_neckToShoulder: neckToShoulder,
+        customer_legLength: legLength,
+        customer_upperPocket: upperPocket,
+        customer_dressDesign: dressType,
+        customer_neckStyle: neckType,
+        customer_orderPrice: price,
+        customer_orderStatus: orderStatus,
+        customer_paymentStatus: paymentStatus,
+        customer_noOfSuits: noOfSuits,
+      });
       handleCloseSmallModal();
       setName("");
       setContact("");

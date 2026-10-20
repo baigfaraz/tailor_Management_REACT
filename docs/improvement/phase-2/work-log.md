@@ -37,3 +37,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: E2E "asks for confirmation, then removes the customer", "cancel keeps the customer".
 - Verified: tests ✅ lint ✅ build ✅ E2E 40/40 incl. visual ✅ (desktop + tablet).
 - Side effects / follow-ups: trash icon is still not keyboard reachable (A11Y-001, Phase 3). Soft delete/undo can come with SEC-006 thinking later.
+
+### ARCH-001: API module and same-origin serving
+
+- Branch / commit: BE `phase-2/arch-001-serve-web`, FE `phase-2/arch-001-api-module`
+- Root cause: 7 components called `axios` with a hardcoded `http://localhost:5000` URL; on a tablet `localhost` is the tablet itself.
+- Fix: FE `src/api/client.js` (base `/api`, optional `REACT_APP_API_BASE`) + `src/api/customers.js` (6 functions); components call functions. CRA dev server proxies `/api` to `http://localhost:5000`. BE `createApp({ webDist })` serves the frontend build and SPA fallback when `WEB_DIST` is set (shop PC: one address for UI and API). Removed a `console.log` of the customer name (personal data).
+- Tests added: BE 5 tests for static serving and SPA fallback (`test/web.test.js`). FE E2E now runs production-like: API serves the build on one origin; the 5000→5100 reroute and port-5000 guard were removed, and any request to port 5000 is aborted as a defense.
+- Verified: BE 23/23 ✅ lint (new files) ✅; FE lint ✅ build ✅ E2E 40/40 incl. visual ✅; dev proxy checked (`/api` via port 3001 → 5000 returned 200).
+- Side effects / follow-ups: dev API must run on port 5000 for `npm start` (unchanged). E2E can now run while the dev API is up.

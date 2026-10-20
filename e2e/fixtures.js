@@ -1,5 +1,5 @@
-// Shared E2E setup: empty test database per test, API helpers, and a reroute of
-// the app's hardcoded http://localhost:5000 calls (ARCH-001) to the test API.
+// Shared E2E setup: empty test database per test and API helpers. The app and
+// API share one origin (port 5100, in-memory MongoDB).
 const base = require("@playwright/test");
 
 const API_PORT = 5100;
@@ -46,11 +46,8 @@ const test = base.test.extend({
   },
   page: async ({ page, api }, use) => {
     void api; // ensure the database is reset before the page loads
-    await page.route("http://localhost:5000/**", (route) =>
-      route.continue({
-        url: route.request().url().replace(":5000", `:${API_PORT}`),
-      }),
-    );
+    // Defense in depth: nothing may reach the dev API on port 5000 (real Atlas data).
+    await page.route("http://localhost:5000/**", (route) => route.abort());
     await use(page);
   },
 });

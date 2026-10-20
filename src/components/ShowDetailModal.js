@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import axios from "axios";
+import { updateOrderStatus, updatePaymentStatus } from "../api/customers";
 
 export default function ShowDetailModal({
   show,
@@ -39,13 +39,7 @@ export default function ShowDetailModal({
       data.customer_paymentStatus === "Pending" ? "Complete" : "Pending";
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/customerDetail/paymentStatus/${data.customer_id}`,
-        {
-          customer_paymentStatus: newStatus,
-        },
-      );
-      console.log(response.data.customer_paymentStatus);
+      await updatePaymentStatus(data.customer_id, newStatus);
     } catch (error) {
       console.error("Error in updating data:", error);
     }
@@ -57,13 +51,7 @@ export default function ShowDetailModal({
       data.customer_orderStatus === "Pending" ? "Complete" : "Pending";
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/customerDetail/orderStatus/${data.customer_id}`,
-        {
-          customer_orderStatus: newStatus,
-        },
-      );
-      console.log(response.data.customer_orderStatus);
+      await updateOrderStatus(data.customer_id, newStatus);
     } catch (error) {
       console.error("Error in updating data:", error);
     }

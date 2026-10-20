@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import ShowDetailModal from "./ShowDetailModal";
-import axios from "axios";
+import { deleteCustomer, getCustomer, listCustomers } from "../api/customers";
 import { Trash } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -24,10 +24,7 @@ const AllCustomer = () => {
 
   const getSomeData = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/customerDetail/somedata",
-      );
-      setSomeData(response.data);
+      setSomeData(await listCustomers());
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -35,10 +32,7 @@ const AllCustomer = () => {
 
   const getCustomerDetail = async (id) => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/customerDetail/${id}`,
-      );
-      setCustomerData(response.data);
+      setCustomerData(await getCustomer(id));
       return true;
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -48,9 +42,7 @@ const AllCustomer = () => {
 
   const handleDeleteCustomer = async (id) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/customerDetail/delete/${id}`,
-      );
+      await deleteCustomer(id);
       getSomeData();
     } catch (error) {
       console.log("Error", error);
