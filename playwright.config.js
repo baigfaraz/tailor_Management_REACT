@@ -11,6 +11,7 @@ const CONTROL_PORT = 5155;
 
 module.exports = defineConfig({
   testDir: "./e2e",
+  globalSetup: require.resolve("./e2e/global-setup.js"),
   fullyParallel: false,
   workers: 1,
   retries: 0,

@@ -175,7 +175,6 @@ test.describe("4–5. Mark order and payment complete", () => {
     page,
     api,
   }) => {
-    test.fail(true, "Known bug UX-001: stale status state in ShowDetailModal");
     await api.createCustomer({ customer_name: "Ayesha Malik" });
     await api.createCustomer({ customer_name: "Ali Raza" });
     await page.goto("/Home/AllCustomer");
@@ -190,6 +189,37 @@ test.describe("4–5. Mark order and payment complete", () => {
     await expect(dialog).toContainText(/Order Status :\s*Pending/, {
       timeout: 3000,
     });
+  });
+});
+
+test.describe("Detail data freshness (UX-002)", () => {
+  test("never shows the previous customer while the next one loads", async ({
+    page,
+    api,
+  }) => {
+    await api.createCustomer({ customer_name: "Ali Raza" });
+    await api.createCustomer({ customer_name: "Sara Khan" });
+    await page.goto("/Home/AllCustomer");
+
+    await openCustomerFromList(page, "Ali Raza");
+    await page
+      .getByRole("dialog")
+      .getByRole("button", { name: "Close" })
+      .click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+
+    await page.route("**/api/customerDetail/2", async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // fallback() keeps the fixture's reroute to the test API; continue() would skip it.
+      await route.fallback();
+    });
+    await customerRow(page, "Sara Khan")
+      .getByRole("cell", { name: "Sara Khan", exact: true })
+      .click();
+    await page.waitForTimeout(500);
+    // Immediate check (no auto-retry): retrying would wait for the real data and hide the flash.
+    expect(await page.locator(".modal").getByText("Ali Raza").count()).toBe(0);
+    await expect(page.getByRole("dialog").getByText("Sara Khan")).toBeVisible();
   });
 });
 

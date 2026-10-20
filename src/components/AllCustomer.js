@@ -36,8 +36,10 @@ const AllCustomer = () => {
         `http://localhost:5000/api/customerDetail/${id}`,
       );
       setCustomerData(response.data);
+      return true;
     } catch (error) {
       console.error("Error fetching data:", error);
+      return false;
     }
   };
 
@@ -61,9 +63,11 @@ const AllCustomer = () => {
     getSomeData();
   };
 
-  const customerDetail = (id) => {
-    getCustomerDetail(id);
-    handleOpenModal();
+  // Open only after the new customer has loaded, so the modal never shows the previous one.
+  const customerDetail = async (id) => {
+    if (await getCustomerDetail(id)) {
+      handleOpenModal();
+    }
   };
 
   return (

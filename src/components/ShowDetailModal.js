@@ -12,8 +12,6 @@ export default function ShowDetailModal({
   modalClassName,
   data,
 }) {
-  const [updatedOrderStatus, setUpdatedOrderStatus] = useState();
-  const [updatedPaymentStatus, setUpdatedPaymentStatus] = useState();
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [confirmationAction, setConfirmationAction] = useState(null);
 
@@ -39,7 +37,6 @@ export default function ShowDetailModal({
   const handlePaymentComplete = async () => {
     const newStatus =
       data.customer_paymentStatus === "Pending" ? "Complete" : "Pending";
-    setUpdatedPaymentStatus(newStatus);
 
     try {
       const response = await axios.put(
@@ -58,7 +55,6 @@ export default function ShowDetailModal({
   const handleOrderComplete = async () => {
     const newStatus =
       data.customer_orderStatus === "Pending" ? "Complete" : "Pending";
-    setUpdatedOrderStatus(newStatus);
 
     try {
       const response = await axios.put(
@@ -197,11 +193,7 @@ export default function ShowDetailModal({
                   className="LabelandField"
                 >
                   <Form.Label className="label">Payment Status : </Form.Label>
-                  {updatedPaymentStatus ? (
-                    <p>{updatedPaymentStatus}</p>
-                  ) : (
-                    <p>{data.customer_paymentStatus}</p>
-                  )}
+                  <p>{data.customer_paymentStatus}</p>
                 </Form.Group>
               </Row>
             </Col>
@@ -210,11 +202,7 @@ export default function ShowDetailModal({
               <Col>
                 <Form.Group controlId="orderStatus" className="LabelandField">
                   <Form.Label className="label">Order Status : </Form.Label>
-                  {updatedOrderStatus ? (
-                    <p>{updatedOrderStatus}</p>
-                  ) : (
-                    <p>{data.customer_orderStatus}</p>
-                  )}
+                  <p>{data.customer_orderStatus}</p>
                 </Form.Group>
               </Col>
             </Row>
