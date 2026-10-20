@@ -31,7 +31,7 @@ describe("DetailModal save feedback (UX-004a)", () => {
     createCustomer.mockRejectedValue({
       response: {
         status: 400,
-        data: { error: "Please add all details. Thankyou!" },
+        data: { error: "Please check: Name, Contact." },
       },
     });
     const { handleClose, onSaved } = setup();
@@ -40,7 +40,7 @@ describe("DetailModal save feedback (UX-004a)", () => {
     const confirm = await confirmSave();
 
     expect(await within(confirm).findByRole("alert")).toHaveTextContent(
-      "Please add all details. Thankyou!",
+      "Please check: Name, Contact.",
     );
     expect(screen.getByLabelText("Name")).toHaveValue("Bilal Ahmed");
     expect(handleClose).not.toHaveBeenCalled();

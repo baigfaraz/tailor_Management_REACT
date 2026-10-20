@@ -75,7 +75,7 @@ test.describe("1. Add customer", () => {
     expect((await response).status()).toBe(400);
     expect(await api.listCustomers()).toHaveLength(0);
     await expect(page.getByRole("alert")).toHaveText(
-      "Please add all details. Thankyou!",
+      /^Please check: Name, Contact, Waist/,
     );
     await expect(page.getByLabel("Name", { exact: true })).toBeVisible();
   });

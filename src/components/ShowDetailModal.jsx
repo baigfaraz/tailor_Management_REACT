@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { updateOrderStatus, updatePaymentStatus } from "../api/customers";
 import { errorMessage } from "../api/errors";
+import { inches, orderTotal, rupees } from "../format";
 
 export default function ShowDetailModal({
   show,
@@ -93,31 +94,31 @@ export default function ShowDetailModal({
               <Row>
                 <Form.Group controlId="waist" className="LabelandField">
                   <Form.Label className="label">Waist : </Form.Label>
-                  <p>{data.customer_waist}</p>
+                  <p>{inches(data.customer_waist)}</p>
                 </Form.Group>
               </Row>
               <Row>
                 <Form.Group controlId="bust" className="LabelandField">
                   <Form.Label className="label">Bust : </Form.Label>
-                  <p>{data.customer_bust}</p>
+                  <p>{inches(data.customer_bust)}</p>
                 </Form.Group>
               </Row>
               <Row>
                 <Form.Group controlId="upperArm" className="LabelandField">
                   <Form.Label className="label">Upper Arm : </Form.Label>
-                  <p>{data.customer_upperArm}</p>
+                  <p>{inches(data.customer_upperArm)}</p>
                 </Form.Group>
               </Row>
 
               <Form.Group controlId="NeckToSleeve" className="LabelandField">
                 <Form.Label className="label">Neck To Sleeve : </Form.Label>
-                <p>{data.customer_neckToSleeve}</p>
+                <p>{inches(data.customer_neckToSleeve)}</p>
               </Form.Group>
 
               <Row>
                 <Form.Group controlId="back" className="LabelandField">
                   <Form.Label className="label">Back : </Form.Label>
-                  <p>{data.customer_back}</p>
+                  <p>{inches(data.customer_back)}</p>
                 </Form.Group>
               </Row>
               <Row>
@@ -126,14 +127,14 @@ export default function ShowDetailModal({
                   className="LabelandField"
                 >
                   <Form.Label className="label">Neck To Shoulder : </Form.Label>
-                  <p>{data.customer_neckToShoulder}</p>
+                  <p>{inches(data.customer_neckToShoulder)}</p>
                 </Form.Group>
               </Row>
 
               <Row>
                 <Form.Group controlId="legLength" className="LabelandField">
                   <Form.Label className="label">Leg Length : </Form.Label>
-                  <p>{data.customer_legLength}</p>
+                  <p>{inches(data.customer_legLength)}</p>
                 </Form.Group>
               </Row>
             </Col>
@@ -164,7 +165,7 @@ export default function ShowDetailModal({
               <Row>
                 <Form.Group controlId="price" className="LabelandField">
                   <Form.Label className="label">Price per suit : </Form.Label>
-                  <p>{data.customer_orderPrice}</p>
+                  <p>{rupees(data.customer_orderPrice)}</p>
                 </Form.Group>
               </Row>
               <Row>
@@ -198,9 +199,10 @@ export default function ShowDetailModal({
                 <Form.Group controlId="totalPayment" className="LabelandField">
                   <Form.Label className="label">Total Payment : </Form.Label>
                   <p>
-                    {parseFloat(data.customer_orderPrice) *
-                      parseFloat(data.customer_noOfSuits) +
-                      " Rs"}
+                    {orderTotal(
+                      data.customer_orderPrice,
+                      data.customer_noOfSuits,
+                    )}
                   </p>
                 </Form.Group>
               </Row>
