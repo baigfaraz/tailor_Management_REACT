@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Tailor Management System — Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React app for a tailor shop: add customers with measurements, see all customers, search by number, and track order and payment status. It talks to the API in [tailor_Management_Server](https://github.com/baigfaraz/tailor_Management_Server), which also serves this app at the shop.
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+- Node 24 (`.nvmrc`; e.g. `fnm install 24 && fnm use`)
+- The server repo cloned next to this one as `../backend` (for development and E2E tests)
 
-### `npm start`
+## Development
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm ci
+npm start            # Vite dev server, http://localhost:3000
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Start the API too (`npm run dev` in `../backend`, port 5000); the dev server proxies `/api` to it. Each new browser asks for the shop PIN once (`SHOP_PIN` in the server's `.env`).
 
-### `npm test`
+To call an API on another address, build with `VITE_API_BASE=http://<address>:5000` and list this app's origin in the server's `CORS_ORIGINS`. Normally not needed: at the shop the server serves the built app from the same address.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Build
 
-### `npm run build`
+```bash
+npm run build        # output in build/ (the server's WEB_DIST points here)
+npm run preview      # serve the build locally on port 3000
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Checks
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run lint
+npm run format:check
+npm test             # component tests (Vitest + Testing Library)
+npm run build && npm run test:e2e    # Playwright E2E, desktop + tablet
+npm run test:visual  # local-only screenshot comparison
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+E2E tests start the server from `../backend` (or `SERVER_DIR`) on port 5100 with an in-memory database, so they never touch real data and can run while your dev servers are up. See `docs/improvement/phase-2/testing-guide.md`.
 
-### `npm run eject`
+CI (GitHub Actions) runs lint, format check, unit tests, build and E2E on every push and pull request.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Running at the shop
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+See the server README's "Running at the shop" section: build this app, set `WEB_DIST=../frontend/build` in the server's `.env`, start the server, and open `http://<computer-address>:5000` on each tablet.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project docs
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`docs/improvement/`: Phase 0 baseline, Phase 1 audit (backlog and roadmap), Phase 2 stabilization. `CLAUDE.md` has the short version.
