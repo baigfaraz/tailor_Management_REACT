@@ -71,7 +71,7 @@ export default function DetailModal({ show, handleClose, modalClassName }) {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       console.log(name);
       handleCloseSmallModal();

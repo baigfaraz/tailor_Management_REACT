@@ -22,7 +22,7 @@ const AllCustomer = () => {
   const getSomeData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/customerDetail/somedata"
+        "http://localhost:5000/api/customerDetail/somedata",
       );
       setSomeData(response.data);
     } catch (error) {
@@ -33,7 +33,7 @@ const AllCustomer = () => {
   const getCustomerDetail = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/customerDetail/${id}`
+        `http://localhost:5000/api/customerDetail/${id}`,
       );
       setCustomerData(response.data);
     } catch (error) {
@@ -44,7 +44,7 @@ const AllCustomer = () => {
   const handleDeleteCustomer = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/customerDetail/delete/${id}`
+        `http://localhost:5000/api/customerDetail/delete/${id}`,
       );
       getSomeData();
     } catch (error) {

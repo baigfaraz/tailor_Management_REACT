@@ -46,7 +46,7 @@ export default function ShowDetailModal({
         `http://localhost:5000/api/customerDetail/paymentStatus/${data.customer_id}`,
         {
           customer_paymentStatus: newStatus,
-        }
+        },
       );
       console.log(response.data.customer_paymentStatus);
     } catch (error) {
@@ -65,7 +65,7 @@ export default function ShowDetailModal({
         `http://localhost:5000/api/customerDetail/orderStatus/${data.customer_id}`,
         {
           customer_orderStatus: newStatus,
-        }
+        },
       );
       console.log(response.data.customer_orderStatus);
     } catch (error) {

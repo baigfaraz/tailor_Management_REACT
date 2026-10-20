@@ -13,7 +13,7 @@ export default function SearchScreen() {
   const getCustomerDetail = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/customerDetail/${id}`
+        `http://localhost:5000/api/customerDetail/${id}`,
       );
 
       setCustomerData(response.data);
