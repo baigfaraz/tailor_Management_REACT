@@ -1,0 +1,3 @@
+  12 font-family: "Montserrat", sans-serif
+   3 font-family: "Dancing Script", cursive
+   2 font-family: "Mogra", cursive

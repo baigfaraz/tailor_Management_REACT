@@ -1,0 +1,6 @@
+     313 total
+     183 backend/controllers/customerDetailController.js
+      80 backend/models/customerDetailModel.js
+      18 backend/server.js
+      18 backend/config/db.js
+      14 backend/routes/customerDetailRoute.js

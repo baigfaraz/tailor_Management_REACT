@@ -1,0 +1,15 @@
+    1655 total
+     473 src/App.css
+     415 src/components/DetailModal.js
+     292 src/components/ShowDetailModal.js
+     182 src/components/AllCustomer.js
+      66 src/components/SearchScreen.js
+      66 src/components/HomePage.js
+      33 src/components/WelcomePage.js
+      30 src/components/Searchbar.js
+      28 src/components/Card.js
+      26 src/App.js
+      22 src/components/Header.js
+      14 src/index.js
+       8 src/App.test.js
+       0 src/index.css

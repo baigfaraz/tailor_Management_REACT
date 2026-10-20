@@ -1,0 +1,19 @@
+  34 #dbd8e3
+  14 #2a2438
+   6 #5c5470
+   3 #352f44
+   2 #fff
+   2 #ccc
+   2 #000000
+   2  red
+   1 rgba(0, 0, 0, 0.2)
+   1 rgba(0, 0, 0, 0.1)
+   1 #ffffff
+   1 #f5f5f5
+   1 #f2f2f2
+   1 #ddd
+   1 #007bff
+   1 #0056b3
+   1  lightcoral
+   1  inherit
+   1  greenyellow

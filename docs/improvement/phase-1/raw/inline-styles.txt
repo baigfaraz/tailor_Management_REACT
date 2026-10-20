@@ -1,0 +1,1 @@
+src/components/Card.js:10:        style={{ width: "18rem", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}

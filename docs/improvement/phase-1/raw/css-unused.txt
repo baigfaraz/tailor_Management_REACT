@@ -1,0 +1,13 @@
+CompleteButton
+CustomerDetails
+DetailContact
+DetailMeasurements
+DetailName
+DetailStatus
+DetailsHeader
+MeasurementField
+MeasurementInput
+MeasurementLabel
+customCloseButton
+customSaveButton
+marginBottom

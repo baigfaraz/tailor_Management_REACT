@@ -1,0 +1,15 @@
+  11  2rem
+  10  1rem
+   7  10px
+   5  20px
+   2  8px 12px
+   2  50px
+   2  40px
+   2  0 auto
+   1  8px
+   1  5rem
+   1  5px
+   1  3rem
+   1  22px
+   1  10px 0
+   1  0

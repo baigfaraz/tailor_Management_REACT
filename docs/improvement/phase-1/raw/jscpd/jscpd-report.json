@@ -1,0 +1,293 @@
+{
+  "statistics": {
+    "detectionDate": "2026-10-20T11:12:59.395Z",
+    "formats": {
+      "javascript": {
+        "sources": {
+          "src/components/WelcomePage.js": {
+            "lines": 32,
+            "tokens": 316,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/ShowDetailModal.js": {
+            "lines": 291,
+            "tokens": 2585,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/Searchbar.js": {
+            "lines": 29,
+            "tokens": 210,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SearchScreen.js": {
+            "lines": 65,
+            "tokens": 545,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/HomePage.js": {
+            "lines": 65,
+            "tokens": 473,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/Header.js": {
+            "lines": 21,
+            "tokens": 166,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/DetailModal.js": {
+            "lines": 414,
+            "tokens": 3343,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/Card.js": {
+            "lines": 27,
+            "tokens": 235,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/AllCustomer.js": {
+            "lines": 181,
+            "tokens": 1344,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/index.js": {
+            "lines": 11,
+            "tokens": 85,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/App.js": {
+            "lines": 25,
+            "tokens": 216,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "../backend/backend/routes/customerDetailRoute.js": {
+            "lines": 13,
+            "tokens": 139,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "../backend/backend/models/customerDetailModel.js": {
+            "lines": 79,
+            "tokens": 479,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "../backend/backend/controllers/customerDetailController.js": {
+            "lines": 182,
+            "tokens": 1509,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 32,
+            "duplicatedTokens": 230,
+            "percentage": 17.58,
+            "percentageTokens": 15.24,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "../backend/backend/config/db.js": {
+            "lines": 17,
+            "tokens": 149,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "../backend/backend/server.js": {
+            "lines": 17,
+            "tokens": 163,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1469,
+          "tokens": 11957,
+          "sources": 16,
+          "clones": 1,
+          "duplicatedLines": 16,
+          "duplicatedTokens": 115,
+          "percentage": 1.09,
+          "percentageTokens": 0.96,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "css": {
+        "sources": {
+          "src/App.css": {
+            "lines": 473,
+            "tokens": 2354,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 473,
+          "tokens": 2354,
+          "sources": 1,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 1942,
+      "tokens": 14311,
+      "sources": 17,
+      "clones": 1,
+      "duplicatedLines": 16,
+      "duplicatedTokens": 115,
+      "percentage": 0.82,
+      "percentageTokens": 0.8,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "javascript",
+      "lines": 17,
+      "fragment": "} },\n      { new: true }\n    );\n\n    if (!updatedCustomer) {\n      return res.status(404).json({ error: \"Customer not found.\" });\n    }\n\n    res.status(200).json(updatedCustomer);\n  } catch (error) {\n    res\n      .status(500)\n      .json({ error: \"An error occurred while processing your request.\" });\n  }\n});\n\n// @desc delete customer",
+      "tokens": 0,
+      "firstFile": {
+        "name": "../backend/backend/controllers/customerDetailController.js",
+        "start": 138,
+        "end": 154,
+        "startLoc": {
+          "line": 138,
+          "column": 2,
+          "position": 1176
+        },
+        "endLoc": {
+          "line": 154,
+          "column": 25,
+          "position": 1291
+        }
+      },
+      "secondFile": {
+        "name": "../backend/backend/controllers/customerDetailController.js",
+        "start": 112,
+        "end": 128,
+        "startLoc": {
+          "line": 112,
+          "column": 2,
+          "position": 965
+        },
+        "endLoc": {
+          "line": 128,
+          "column": 39,
+          "position": 1080
+        }
+      }
+    }
+  ]
+}

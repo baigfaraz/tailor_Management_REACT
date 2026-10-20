@@ -1,0 +1,13 @@
+npm warn deprecated @snyk/github-codeowners@1.1.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+file:///Users/farazbaig/.npm/_npx/fa37ab4fde7b1f56/node_modules/knip/dist/typescript/create-hosts.js:7
+const libLocation = path.dirname(ts.getDefaultLibFilePath({}));
+                                    ^
+
+TypeError: ts.getDefaultLibFilePath is not a function
+    at file:///Users/farazbaig/.npm/_npx/fa37ab4fde7b1f56/node_modules/knip/dist/typescript/create-hosts.js:7:37
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+knip 5.27.0 failed: TypeError ts.getDefaultLibFilePath is not a function (needs typescript peer; project is JS). Used depcheck (Phase 0) + manual class scan instead.

@@ -1,0 +1,1491 @@
+{
+  "axe": {
+    "welcome": [
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "help": "Images must have alternative text",
+        "tags": [
+          "wcag2a",
+          "wcag111"
+        ],
+        "nodes": 1,
+        "targets": [
+          "img"
+        ]
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "html"
+        ]
+      },
+      {
+        "id": "nested-interactive",
+        "impact": "serious",
+        "help": "Interactive controls must not be nested",
+        "tags": [
+          "wcag2a",
+          "wcag412"
+        ],
+        "nodes": 1,
+        "targets": [
+          "button"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 3,
+        "targets": [
+          "h1",
+          ".getStartedDivDescription",
+          ".ImageDiv"
+        ]
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "tags": [
+          "wcag22aa",
+          "wcag258"
+        ],
+        "nodes": 2,
+        "targets": [
+          "button",
+          "a"
+        ]
+      }
+    ],
+    "dashboard": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "h3:nth-child(1)"
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "help": "Images must have alternative text",
+        "tags": [
+          "wcag2a",
+          "wcag111"
+        ],
+        "nodes": 3,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > img",
+          "div:nth-child(2) > .cardBackground.card > img",
+          "div:nth-child(3) > .cardBackground.card > img"
+        ]
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "html"
+        ]
+      },
+      {
+        "id": "nested-interactive",
+        "impact": "serious",
+        "help": "Interactive controls must not be nested",
+        "tags": [
+          "wcag2a",
+          "wcag412"
+        ],
+        "nodes": 3,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > .card-body > button",
+          "div:nth-child(2) > .cardBackground.card > .card-body > button",
+          "div:nth-child(3) > .cardBackground.card > .card-body > button"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 7,
+        "targets": [
+          ".description",
+          "div:nth-child(1) > .cardBackground.card > img",
+          "div:nth-child(1) > .cardBackground.card > .card-body > .cardText.card-title.h5",
+          "div:nth-child(2) > .cardBackground.card > img"
+        ]
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "tags": [
+          "wcag22aa",
+          "wcag258"
+        ],
+        "nodes": 6,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > .card-body > button",
+          "button > a[href$=\"Home\"]",
+          "div:nth-child(2) > .cardBackground.card > .card-body > button",
+          "a[href$=\"AllCustomer\"]"
+        ]
+      }
+    ],
+    "all-customers": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "tags": [
+          "wcag2aa",
+          "wcag143"
+        ],
+        "nodes": 5,
+        "targets": [
+          ".body-cell:nth-child(1) > .PendingStatus",
+          ".body-cell:nth-child(2) > .PendingStatus",
+          ".PendingStatus:nth-child(4)",
+          ".body-cell:nth-child(4) > .PendingStatus:nth-child(5)"
+        ]
+      },
+      {
+        "id": "empty-table-header",
+        "impact": "minor",
+        "help": "Table header text should not be empty",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "th:nth-child(6)"
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "h3:nth-child(1)"
+        ]
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "html"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 27,
+        "targets": [
+          "text",
+          "thead",
+          ".body-cell:nth-child(1) > td:nth-child(1)",
+          ".body-cell:nth-child(1) > td:nth-child(2)"
+        ]
+      }
+    ],
+    "search": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "h3:nth-child(1)"
+        ]
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "html"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 2,
+        "targets": [
+          "p",
+          "input"
+        ]
+      }
+    ],
+    "add-customer-modal": [
+      {
+        "id": "aria-dialog-name",
+        "impact": "serious",
+        "help": "ARIA dialog and alertdialog nodes should have an accessible name",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          ".customModal"
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "h3:nth-child(1)"
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "help": "Images must have alternative text",
+        "tags": [
+          "wcag2a",
+          "wcag111"
+        ],
+        "nodes": 3,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > img",
+          "div:nth-child(2) > .cardBackground.card > img",
+          "div:nth-child(3) > .cardBackground.card > img"
+        ]
+      },
+      {
+        "id": "nested-interactive",
+        "impact": "serious",
+        "help": "Interactive controls must not be nested",
+        "tags": [
+          "wcag2a",
+          "wcag412"
+        ],
+        "nodes": 3,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > .card-body > .cardButton.btn-primary",
+          "div:nth-child(2) > .cardBackground.card > .card-body > .cardButton.btn-primary",
+          "div:nth-child(3) > .cardBackground.card > .card-body > .cardButton.btn-primary"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 7,
+        "targets": [
+          ".description",
+          "div:nth-child(1) > .cardBackground.card > img",
+          "div:nth-child(1) > .cardBackground.card > .card-body > .cardText.card-title.h5",
+          "div:nth-child(2) > .cardBackground.card > img"
+        ]
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "tags": [
+          "wcag22aa",
+          "wcag258"
+        ],
+        "nodes": 6,
+        "targets": [
+          "div:nth-child(1) > .cardBackground.card > .card-body > .cardButton.btn-primary",
+          ".cardButton.btn-primary > a[href$=\"Home\"]",
+          "div:nth-child(2) > .cardBackground.card > .card-body > .cardButton.btn-primary",
+          "a[href$=\"AllCustomer\"]"
+        ]
+      }
+    ],
+    "detail-modal": [
+      {
+        "id": "aria-dialog-name",
+        "impact": "serious",
+        "help": "ARIA dialog and alertdialog nodes should have an accessible name",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          ".customModal"
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "tags": [
+          "wcag2aa",
+          "wcag143"
+        ],
+        "nodes": 5,
+        "targets": [
+          ".body-cell:nth-child(1) > .PendingStatus",
+          ".body-cell:nth-child(2) > .PendingStatus",
+          ".PendingStatus:nth-child(4)",
+          ".body-cell:nth-child(4) > .PendingStatus:nth-child(5)"
+        ]
+      },
+      {
+        "id": "empty-table-header",
+        "impact": "minor",
+        "help": "Table header text should not be empty",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "th:nth-child(6)"
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "tags": [],
+        "nodes": 1,
+        "targets": [
+          "h3:nth-child(1)"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "tags": [],
+        "nodes": 27,
+        "targets": [
+          ".allcustomerListText",
+          "thead",
+          ".body-cell:nth-child(1) > td:nth-child(1)",
+          ".body-cell:nth-child(1) > td:nth-child(2)"
+        ]
+      }
+    ]
+  },
+  "responsive": {
+    "welcome@320": {
+      "vw": 320,
+      "scrollWidth": 320,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "button.cardButton",
+        "a.GetStartedLink"
+      ],
+      "smallTargetCount": 2,
+      "offscreenControls": []
+    },
+    "dashboard@320": {
+      "vw": 320,
+      "scrollWidth": 624,
+      "overflowPx": 304,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "button.cardButton"
+      ],
+      "smallTargetCount": 8,
+      "offscreenControls": [
+        "Search",
+        "Search"
+      ]
+    },
+    "all-customers@320": {
+      "vw": 320,
+      "scrollWidth": 540,
+      "overflowPx": 220,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "td",
+        "svg"
+      ],
+      "smallTargetCount": 12,
+      "offscreenControls": []
+    },
+    "search@320": {
+      "vw": 320,
+      "scrollWidth": 320,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "input.mr-sm-2"
+      ],
+      "smallTargetCount": 3,
+      "offscreenControls": []
+    },
+    "welcome@375": {
+      "vw": 375,
+      "scrollWidth": 375,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "button.cardButton",
+        "a.GetStartedLink"
+      ],
+      "smallTargetCount": 2,
+      "offscreenControls": []
+    },
+    "dashboard@375": {
+      "vw": 375,
+      "scrollWidth": 652,
+      "overflowPx": 277,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "button.cardButton"
+      ],
+      "smallTargetCount": 8,
+      "offscreenControls": [
+        "Search",
+        "Search"
+      ]
+    },
+    "all-customers@375": {
+      "vw": 375,
+      "scrollWidth": 540,
+      "overflowPx": 165,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "td",
+        "svg"
+      ],
+      "smallTargetCount": 12,
+      "offscreenControls": []
+    },
+    "search@375": {
+      "vw": 375,
+      "scrollWidth": 375,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "input.mr-sm-2"
+      ],
+      "smallTargetCount": 3,
+      "offscreenControls": []
+    },
+    "welcome@768": {
+      "vw": 768,
+      "scrollWidth": 768,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "button.cardButton",
+        "a.GetStartedLink"
+      ],
+      "smallTargetCount": 2,
+      "offscreenControls": []
+    },
+    "dashboard@768": {
+      "vw": 768,
+      "scrollWidth": 848,
+      "overflowPx": 80,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "button.cardButton"
+      ],
+      "smallTargetCount": 8,
+      "offscreenControls": []
+    },
+    "all-customers@768": {
+      "vw": 768,
+      "scrollWidth": 768,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "td",
+        "svg"
+      ],
+      "smallTargetCount": 12,
+      "offscreenControls": []
+    },
+    "search@768": {
+      "vw": 768,
+      "scrollWidth": 768,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "input.mr-sm-2"
+      ],
+      "smallTargetCount": 3,
+      "offscreenControls": []
+    },
+    "welcome@1440": {
+      "vw": 1440,
+      "scrollWidth": 1440,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "button.cardButton",
+        "a.GetStartedLink"
+      ],
+      "smallTargetCount": 2,
+      "offscreenControls": []
+    },
+    "dashboard@1440": {
+      "vw": 1440,
+      "scrollWidth": 1440,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "button.cardButton"
+      ],
+      "smallTargetCount": 8,
+      "offscreenControls": []
+    },
+    "all-customers@1440": {
+      "vw": 1440,
+      "scrollWidth": 1440,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "svg"
+      ],
+      "smallTargetCount": 7,
+      "offscreenControls": []
+    },
+    "search@1440": {
+      "vw": 1440,
+      "scrollWidth": 1440,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "input.mr-sm-2"
+      ],
+      "smallTargetCount": 3,
+      "offscreenControls": []
+    },
+    "welcome@1920": {
+      "vw": 1920,
+      "scrollWidth": 1920,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "button.cardButton",
+        "a.GetStartedLink"
+      ],
+      "smallTargetCount": 2,
+      "offscreenControls": []
+    },
+    "dashboard@1920": {
+      "vw": 1920,
+      "scrollWidth": 1920,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "button.cardButton"
+      ],
+      "smallTargetCount": 8,
+      "offscreenControls": []
+    },
+    "all-customers@1920": {
+      "vw": 1920,
+      "scrollWidth": 1920,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "svg"
+      ],
+      "smallTargetCount": 7,
+      "offscreenControls": []
+    },
+    "search@1920": {
+      "vw": 1920,
+      "scrollWidth": 1920,
+      "overflowPx": 0,
+      "smallTextEls": 0,
+      "smallTargets": [
+        "a.GetStartedLink",
+        "input.mr-sm-2"
+      ],
+      "smallTargetCount": 3,
+      "offscreenControls": []
+    }
+  },
+  "keyboard": {
+    "welcome": [
+      "button[button] \"Get Started\" focusVisible=true",
+      "a \"Get Started\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false",
+      "button[button] \"Get Started\" focusVisible=true",
+      "a \"Get Started\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false"
+    ],
+    "dashboard": [
+      "a \"Home\" focusVisible=true",
+      "a \"Logout\" focusVisible=true",
+      "button[button] \"Add Customer\" focusVisible=true",
+      "a \"Add Customer\" focusVisible=true",
+      "button[button] \"All Customers\" focusVisible=true",
+      "a \"All Customers\" focusVisible=true"
+    ],
+    "all-customers": [
+      "a \"Home\" focusVisible=true",
+      "a \"Logout\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false",
+      "a \"Home\" focusVisible=true",
+      "a \"Logout\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false",
+      "a \"Home\" focusVisible=true",
+      "a \"Logout\" focusVisible=true"
+    ],
+    "search": [
+      "a \"Home\" focusVisible=true",
+      "a \"Logout\" focusVisible=true",
+      "input[text] \"Enter Customer-ID\" focusVisible=false",
+      "button[button] \"Check\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false",
+      "a \"Home\" focusVisible=true"
+    ],
+    "rows-focusable": false,
+    "dashboard-enter-on": "<button type=\"button\" class=\"cardButton btn btn-primary\"><a class=\"GetStartedLink\" href=\"/Home\">Add Customer</a></button",
+    "add-modal-opened-by-keyboard": 1,
+    "add-modal": [
+      "input[text] \"Enter First Name\" focusVisible=true",
+      "input[tel] \"Enter Contact No\" focusVisible=true",
+      "input[text] \"Enter Waist\" focusVisible=true",
+      "input[text] \"Enter Bust\" focusVisible=true",
+      "input[text] \"Enter Upper Arm Length\" focusVisible=true",
+      "input[text] \"Enter Neck To Sleeve Leng\" focusVisible=true",
+      "input[text] \"Enter Back\" focusVisible=true",
+      "input[text] \"Enter Neck To Shoulder\" focusVisible=true",
+      "input[text] \"Enter Leg Length\" focusVisible=true",
+      "input[radio] \"Kurta\" focusVisible=true",
+      "input[radio] \"Color\" focusVisible=true",
+      "input[checkbox] \"on\" focusVisible=true",
+      "input[text] \"Enter no of Suits\" focusVisible=true",
+      "input[text] \"Enter Price\" focusVisible=true",
+      "input[radio] \"Pending\" focusVisible=true",
+      "input[radio] \"Pending\" focusVisible=true",
+      "button[button] \"Close\" focusVisible=true",
+      "button[button] \"Add Detail\" focusVisible=true",
+      "body \"Tailor Management System\n\" focusVisible=false",
+      "div \"Add Customer Details\nCust\" focusVisible=false",
+      "input[text] \"Enter First Name\" focusVisible=true",
+      "input[tel] \"Enter Contact No\" focusVisible=true",
+      "input[text] \"Enter Waist\" focusVisible=true",
+      "input[text] \"Enter Bust\" focusVisible=true",
+      "input[text] \"Enter Upper Arm Length\" focusVisible=true",
+      "input[text] \"Enter Neck To Sleeve Leng\" focusVisible=true"
+    ],
+    "add-modal-closes-on-escape": true
+  },
+  "aria": {
+    "welcome": {
+      "role": "WebArea",
+      "name": "React App",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Tailor Management System",
+          "level": 1
+        },
+        {
+          "role": "text",
+          "name": "Our Platform give ease for tailors, Here you can manage every details of customer such like measurements , payments and status of orders."
+        },
+        {
+          "role": "LineBreak",
+          "name": "\n"
+        },
+        {
+          "role": "text",
+          "name": "Click on 'Get Started' to join our Platform by login with Google!"
+        },
+        {
+          "role": "button",
+          "name": "Get Started",
+          "children": [
+            {
+              "role": "link",
+              "name": "Get Started"
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "name": "  "
+        }
+      ]
+    },
+    "dashboard": {
+      "role": "WebArea",
+      "name": "React App",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Tailor Management System",
+          "level": 1
+        },
+        {
+          "role": "link",
+          "name": "Home"
+        },
+        {
+          "role": "link",
+          "name": "Logout"
+        },
+        {
+          "role": "text",
+          "name": "Our Platform give ease for tailors, Here you can manage every details of customer such like measurements , payments and status of orders. Let's start to try it for free."
+        },
+        {
+          "role": "text",
+          "name": "Add Customer Details"
+        },
+        {
+          "role": "button",
+          "name": "Add Customer",
+          "children": [
+            {
+              "role": "link",
+              "name": "Add Customer"
+            }
+          ]
+        },
+        {
+          "role": "text",
+          "name": "Check Customers"
+        },
+        {
+          "role": "button",
+          "name": "All Customers",
+          "children": [
+            {
+              "role": "link",
+              "name": "All Customers"
+            }
+          ]
+        },
+        {
+          "role": "text",
+          "name": "Search Customer"
+        },
+        {
+          "role": "button",
+          "name": "Search",
+          "children": [
+            {
+              "role": "link",
+              "name": "Search"
+            }
+          ]
+        }
+      ]
+    },
+    "all-customers": {
+      "role": "WebArea",
+      "name": "React App",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Tailor Management System",
+          "level": 1
+        },
+        {
+          "role": "link",
+          "name": "Home"
+        },
+        {
+          "role": "link",
+          "name": "Logout"
+        },
+        {
+          "role": "text",
+          "name": "All Customers"
+        },
+        {
+          "role": "text",
+          "name": "Customer No"
+        },
+        {
+          "role": "text",
+          "name": "Name"
+        },
+        {
+          "role": "text",
+          "name": "Contact No"
+        },
+        {
+          "role": "text",
+          "name": "Order Status"
+        },
+        {
+          "role": "text",
+          "name": "Payment Status"
+        },
+        {
+          "role": "text",
+          "name": "1"
+        },
+        {
+          "role": "text",
+          "name": "Ali Raza"
+        },
+        {
+          "role": "text",
+          "name": "0300-000001"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        },
+        {
+          "role": "text",
+          "name": "2"
+        },
+        {
+          "role": "text",
+          "name": "Sara Khan"
+        },
+        {
+          "role": "text",
+          "name": "0300-000002"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        },
+        {
+          "role": "text",
+          "name": "3"
+        },
+        {
+          "role": "text",
+          "name": "Usman Tariq"
+        },
+        {
+          "role": "text",
+          "name": "0300-000003"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "4"
+        },
+        {
+          "role": "text",
+          "name": "Ayesha Malik"
+        },
+        {
+          "role": "text",
+          "name": "0300-000004"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        },
+        {
+          "role": "text",
+          "name": "5"
+        },
+        {
+          "role": "text",
+          "name": "Bilal Ahmed"
+        },
+        {
+          "role": "text",
+          "name": "0300-000005"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        }
+      ]
+    },
+    "search": {
+      "role": "WebArea",
+      "name": "React App",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Tailor Management System",
+          "level": 1
+        },
+        {
+          "role": "link",
+          "name": "Home"
+        },
+        {
+          "role": "link",
+          "name": "Logout"
+        },
+        {
+          "role": "text",
+          "name": "Search customer by Name or Customer-ID"
+        },
+        {
+          "role": "textbox",
+          "name": "Enter Customer-ID"
+        },
+        {
+          "role": "button",
+          "name": "Check"
+        }
+      ]
+    },
+    "add-customer-modal": {
+      "role": "dialog",
+      "name": "",
+      "focused": true,
+      "modal": true,
+      "children": [
+        {
+          "role": "text",
+          "name": "Add Customer Details"
+        },
+        {
+          "role": "generic",
+          "name": "",
+          "children": [
+            {
+              "role": "text",
+              "name": "Customer Details"
+            },
+            {
+              "role": "text",
+              "name": "Name"
+            },
+            {
+              "role": "textbox",
+              "name": "Name"
+            },
+            {
+              "role": "text",
+              "name": "Contact"
+            },
+            {
+              "role": "textbox",
+              "name": "Contact"
+            },
+            {
+              "role": "text",
+              "name": "Customer Measurements"
+            },
+            {
+              "role": "text",
+              "name": "Waist"
+            },
+            {
+              "role": "textbox",
+              "name": "Waist"
+            },
+            {
+              "role": "text",
+              "name": "Bust"
+            },
+            {
+              "role": "textbox",
+              "name": "Bust"
+            },
+            {
+              "role": "text",
+              "name": "Upper Arm"
+            },
+            {
+              "role": "textbox",
+              "name": "Upper Arm"
+            },
+            {
+              "role": "text",
+              "name": "Neck To Sleeve"
+            },
+            {
+              "role": "textbox",
+              "name": "Neck To Sleeve"
+            },
+            {
+              "role": "text",
+              "name": "Back"
+            },
+            {
+              "role": "textbox",
+              "name": "Back"
+            },
+            {
+              "role": "text",
+              "name": "Neck To Shoulder"
+            },
+            {
+              "role": "textbox",
+              "name": "Neck To Shoulder"
+            },
+            {
+              "role": "text",
+              "name": "Leg Length"
+            },
+            {
+              "role": "textbox",
+              "name": "Leg Length"
+            },
+            {
+              "role": "text",
+              "name": "Customer Requirements"
+            },
+            {
+              "role": "radio",
+              "name": "Kurta Shalwar",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Kurta"
+            },
+            {
+              "role": "radio",
+              "name": "",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Shalwar"
+            },
+            {
+              "role": "radio",
+              "name": "Color Ban",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Color"
+            },
+            {
+              "role": "radio",
+              "name": "",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Ban"
+            },
+            {
+              "role": "checkbox",
+              "name": "Upper Pocket",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Upper Pocket"
+            },
+            {
+              "role": "text",
+              "name": "Payment Detail"
+            },
+            {
+              "role": "text",
+              "name": "No of Suits"
+            },
+            {
+              "role": "textbox",
+              "name": "No of Suits"
+            },
+            {
+              "role": "text",
+              "name": "Price Per Suit"
+            },
+            {
+              "role": "textbox",
+              "name": "Price Per Suit"
+            },
+            {
+              "role": "radio",
+              "name": "Payment Pending Payment Complete",
+              "checked": true
+            },
+            {
+              "role": "text",
+              "name": "Payment Pending"
+            },
+            {
+              "role": "radio",
+              "name": "",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Payment Complete"
+            },
+            {
+              "role": "text",
+              "name": "Order Status"
+            },
+            {
+              "role": "radio",
+              "name": "Order Pending Order Complete",
+              "checked": true
+            },
+            {
+              "role": "text",
+              "name": "Order Pending"
+            },
+            {
+              "role": "radio",
+              "name": "",
+              "checked": false
+            },
+            {
+              "role": "text",
+              "name": "Order Complete"
+            }
+          ]
+        },
+        {
+          "role": "button",
+          "name": "Close"
+        },
+        {
+          "role": "button",
+          "name": "Add Detail"
+        }
+      ]
+    },
+    "detail-modal": {
+      "role": "dialog",
+      "name": "",
+      "focused": true,
+      "modal": true,
+      "children": [
+        {
+          "role": "text",
+          "name": "Customer Details"
+        },
+        {
+          "role": "text",
+          "name": "Customer Details"
+        },
+        {
+          "role": "text",
+          "name": "Name :"
+        },
+        {
+          "role": "text",
+          "name": "Ali Raza"
+        },
+        {
+          "role": "text",
+          "name": "Contact :"
+        },
+        {
+          "role": "text",
+          "name": "0300-000001"
+        },
+        {
+          "role": "text",
+          "name": "Customer Measurements"
+        },
+        {
+          "role": "text",
+          "name": "Waist :"
+        },
+        {
+          "role": "text",
+          "name": "31 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Bust :"
+        },
+        {
+          "role": "text",
+          "name": "38 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Upper Arm :"
+        },
+        {
+          "role": "text",
+          "name": "12 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Neck To Sleeve :"
+        },
+        {
+          "role": "text",
+          "name": "30 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Back :"
+        },
+        {
+          "role": "text",
+          "name": "16 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Neck To Shoulder :"
+        },
+        {
+          "role": "text",
+          "name": "7 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Leg Length :"
+        },
+        {
+          "role": "text",
+          "name": "40 Inches"
+        },
+        {
+          "role": "text",
+          "name": "Customer Requirements"
+        },
+        {
+          "role": "text",
+          "name": "Dress design :"
+        },
+        {
+          "role": "text",
+          "name": "Kurta"
+        },
+        {
+          "role": "text",
+          "name": "Neck design :"
+        },
+        {
+          "role": "text",
+          "name": "Ban"
+        },
+        {
+          "role": "text",
+          "name": "Pocket :"
+        },
+        {
+          "role": "text",
+          "name": "Yes"
+        },
+        {
+          "role": "text",
+          "name": "Payment Detail"
+        },
+        {
+          "role": "text",
+          "name": "Price per suit :"
+        },
+        {
+          "role": "text",
+          "name": "2500 Rs"
+        },
+        {
+          "role": "text",
+          "name": "No of suits :"
+        },
+        {
+          "role": "text",
+          "name": "2"
+        },
+        {
+          "role": "text",
+          "name": "Payment Status :"
+        },
+        {
+          "role": "text",
+          "name": "Pending"
+        },
+        {
+          "role": "text",
+          "name": "Order Status"
+        },
+        {
+          "role": "text",
+          "name": "Order Status :"
+        },
+        {
+          "role": "text",
+          "name": "Complete"
+        },
+        {
+          "role": "text",
+          "name": "Total :"
+        },
+        {
+          "role": "text",
+          "name": "Total Payment :"
+        },
+        {
+          "role": "text",
+          "name": "5000 Rs"
+        },
+        {
+          "role": "button",
+          "name": "Close"
+        },
+        {
+          "role": "button",
+          "name": "Complete Payment"
+        }
+      ]
+    }
+  },
+  "semantics": {
+    "welcome": {
+      "lang": "en",
+      "title": "React App",
+      "h1": [
+        "Tailor Management System"
+      ],
+      "headings": [
+        "H1:Tailor Management System"
+      ],
+      "landmarks": [],
+      "textTags": 2,
+      "imgsNoAlt": 1,
+      "clickableNonInteractive": 0,
+      "nestedInteractive": 1
+    },
+    "dashboard": {
+      "lang": "en",
+      "title": "React App",
+      "h1": [
+        "Tailor Management System"
+      ],
+      "headings": [
+        "H1:Tailor Management System",
+        "H3:Home",
+        "H3:Logout"
+      ],
+      "landmarks": [
+        "header"
+      ],
+      "textTags": 1,
+      "imgsNoAlt": 3,
+      "clickableNonInteractive": 0,
+      "nestedInteractive": 3
+    },
+    "all-customers": {
+      "lang": "en",
+      "title": "React App",
+      "h1": [
+        "Tailor Management System"
+      ],
+      "headings": [
+        "H1:Tailor Management System",
+        "H3:Home",
+        "H3:Logout"
+      ],
+      "landmarks": [
+        "header"
+      ],
+      "textTags": 1,
+      "imgsNoAlt": 0,
+      "clickableNonInteractive": 30,
+      "nestedInteractive": 0
+    },
+    "search": {
+      "lang": "en",
+      "title": "React App",
+      "h1": [
+        "Tailor Management System"
+      ],
+      "headings": [
+        "H1:Tailor Management System",
+        "H3:Home",
+        "H3:Logout"
+      ],
+      "landmarks": [
+        "header"
+      ],
+      "textTags": 0,
+      "imgsNoAlt": 0,
+      "clickableNonInteractive": 0,
+      "nestedInteractive": 0
+    }
+  },
+  "states": {
+    "loadingShows": "Tailor Management System\nHome\nLogout\nNo data availaible to show!",
+    "apiDownShows": "Tailor Management System\nHome\nLogout\nNo data availaible to show!",
+    "staleFlash": {
+      "openedRow2ButShows": "Ali Raza",
+      "firstCustomer": "Ali Raza"
+    },
+    "k005": {
+      "completed": "Ayesha Malik",
+      "thenOpened": "Ali Raza",
+      "actualOrderStatus": "Pending",
+      "modalShowsOrderStatus": "Complete",
+      "orderCompleteButtonVisible": true
+    },
+    "emptySubmit": {
+      "posts": [
+        "http://localhost:5000/api/customerDetail",
+        "-> 400"
+      ],
+      "visibleFeedback": "Add Customer Detail\nClick on confirm if you want to add!\nClose\nConfirm"
+    },
+    "doubleSubmit": {
+      "posts": [
+        "http://localhost:5000/api/customerDetail",
+        "-> 201",
+        "http://localhost:5000/api/customerDetail",
+        "-> 400"
+      ],
+      "addModalStillOpen": true,
+      "nameFieldAfter": "",
+      "created": 1
+    },
+    "unknownRouteText": "(blank)"
+  },
+  "console": [
+    "http://localhost:3000/Home/AllCustomer Error fetching data: fo",
+    "http://localhost:3000/Home/AllCustomer Failed to load resource: net::ERR_FAILED",
+    "http://localhost:3000/Home Failed to load resource: the server responded with a status of 400 (Bad Request)",
+    "http://localhost:3000/Home Error posting data: fo"
+  ]
+}
