@@ -32,3 +32,9 @@ yarn-error.log*
 # logs (keep Phase 0+ raw logs in docs)
 *.log
 !docs/improvement/**/*.log
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
