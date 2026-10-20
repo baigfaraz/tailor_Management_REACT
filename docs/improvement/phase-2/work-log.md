@@ -54,7 +54,7 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Fix: BE `src/middleware/deviceAuth.js`: `POST /api/session` with the shop PIN sets a signed httpOnly, SameSite=Strict cookie (1 year); `/api/customerDetail/*` returns 401 without it; 5 wrong PINs per IP → 429 for 15 min; signing key includes the PIN, so a PIN change signs out every device; `DELETE /api/session` forgets a device. CORS limited to `CORS_ORIGINS` (default none). `src/config/env.js` validates `MONGODB_URI`, `SHOP_PIN` (4–8 digits), `SESSION_SECRET` (≥32 chars) at start-up. Only `src/server.js` loads `.env`. FE `DeviceGate` shows a PIN screen (existing styles) until unlocked; any 401 re-locks.
 - Tests added: BE `test/session.test.js` (15: 401 on all 6 endpoints, wrong/missing PIN, cookie flags, forget device, forged cookie, PIN change, lockout, CORS allowlist), `test/env.test.js` (3); CORS characterization test flipped. FE E2E `device-pin.spec.js` (unlock + persists after reload; wrong PIN error); all E2E fixtures unlock via the API.
 - Verified: BE 41/41 ✅ lint ✅; FE lint ✅ build ✅ E2E 44/44 incl. visual ✅ (desktop + tablet); real `.env` start-up ✅; missing env → clear error ✅.
-- Side effects / follow-ups: the owner's local `.env` got `SHOP_PIN=1234` (temporary, owner to change) and a random `SESSION_SECRET`. The E2E server briefly read the dev `.env` PIN while developing this; fixed by removing dotenv from `db.js` and fixing E2E values.
+- Side effects / follow-ups: the owner's local `.env` got a temporary `SHOP_PIN` (owner to change; an earlier version of this log named it, so it must not be reused) and a random `SESSION_SECRET`. The E2E server briefly read the dev `.env` PIN while developing this; fixed by removing dotenv from `db.js` and fixing E2E values.
 
 ### SEC-006: Backups and a tested restore
 
@@ -109,3 +109,61 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: `ErrorBoundary.test.jsx` (2), `NotFound.test.jsx` (1), `client.test.js` (3); E2E unknown-route test flipped to the not-found page.
 - Verified: lint ✅ unit 26/26 ✅ build ✅ E2E 46/46 incl. visual ✅.
 - Side effects / follow-ups: no error-monitoring service (owner did not ask for one; server logs errors, SEC-007).
+
+### SEC-005: Dependency upgrades and Node 24 (both repos)
+
+- Branch / commit: BE `phase-2/sec-005-patch-minor`, `phase-2/deps-node-watch`, `phase-2/runtime-node-24`, `phase-2/deps-vitest-5`, `phase-2/deps-mongoose-8`, `phase-2/deps-mongoose-9`, `phase-2/deps-express-5`, `phase-2/deps-dotenv`; FE `phase-2/runtime-node-24`, `phase-2/deps-patch-minor`, `phase-2/deps-vite-8`, `phase-2/deps-react-router-7`
+- Root cause: 2023 versions with known advisories; Node 20 reached end-of-life in April 2026 (found during this step, owner approved Node 24).
+- Fix: see `upgrades.md`. Majors one per branch. Code changes needed: removed deprecated Mongoose connect options (K-113); `{ new: true }` → `{ returnDocument: "after" }` (Mongoose 9); `req.body ?? {}` (Express 5); dotenv `quiet: true`; `react-router-dom` → `react-router`; nodemon → `node --watch`.
+- Tests added: BE "request without a JSON body" (create and status) for Express 5.
+- Verified per branch: tests ✅ lint ✅ build ✅ E2E ✅; start-up against Atlas (read-only) ✅. Audit: BE 0 vulnerabilities (was 12); FE 1 high, dev-only and accepted (was 103).
+- Side effects / follow-ups: React 19 tried and reverted (+24% JS, no security need) → DEP-001; react-router 8 needs React 19 → DEP-001. JS bundle +11.6 KB gz from axios/router upgrades (PERF-005 targets it). Bug from router 7 caught by CI → see "Card link" below.
+
+### SEC-003: Validation and numeric data
+
+- Branch / commit: BE `phase-2/sec-003-validation`, FE `phase-2/sec-003-numeric-display`
+- Root cause: truthiness checks only, no enums, numbers stored as text with units, invalid ids caused 500.
+- Fix: schema with numeric measurements/price/suits, enums for dress/neck/statuses, upper pocket default false, trimmed required text; 400 with `{ error, fields }` in form order; invalid customer number → 400; unknown status → 400; client `customer_id` ignored. FE shows units via `src/format.js` (legacy text still displays). `npm run migrate:numeric` converts old records (dry run unless `--yes`, backup first).
+- Tests added: BE 15+ (each invalid field, defaults, ids, statuses, forced 500), migration tests (3 + toNumber table); FE `format.test.js` (4).
+- Verified: BE 68 → 76 tests ✅; FE unit + E2E ✅. Atlas dry run: both existing customers held placeholder text (no numbers) → owner chose to delete them; backup `backups/2026-10-20T12-57-31-102Z` taken first, then exactly those 2 were deleted. Atlas now empty, new format.
+- Side effects / follow-ups: neck labels Collar/Band are display-only (UX-009).
+
+### ARCH-007: Atomic customer number counter
+
+- Branch / commit: BE `phase-2/arch-007-counter`
+- Root cause: read max then insert; simultaneous saves collided (duplicate key 500); deleting the newest customer reused its number.
+- Fix: `counters` document updated with one atomic pipeline update; starts after the highest existing number.
+- Tests added: 10 simultaneous saves → 1..10; continues after existing 41; no reuse after delete (2 failed before the fix).
+- Verified: BE 3 runs 71/71 ✅; E2E ✅.
+
+### SEC-004: Security headers
+
+- Branch / commit: BE `phase-2/sec-004-headers`
+- Fix: CSP (self + Google Fonts until UI-002), nosniff, X-Frame-Options DENY, no-referrer, COOP, Permissions-Policy; `X-Powered-By` removed. No new dependency.
+- Tests added: `securityHeaders.test.js` (2). Verified: E2E + visual pass under the CSP.
+
+### SEC-007: Logging
+
+- Branch / commit: BE `phase-2/sec-007-logging`
+- Fix: JSON-lines request log (method, path without query, status, ms, IP) and error log with stack in `LOG_DIR/app-YYYY-MM-DD.log`, 14-day retention, no bodies/PINs/cookies. Errors also on the console.
+- Tests added: `logger.test.js` (2: no secrets logged; daily files + pruning). Verified with a real start.
+
+### ARCH-009: READMEs
+
+- Branch / commit: BE + FE `phase-2/arch-009-readme`
+- Fix: server README (config table, dev, checks, running at the shop, tablets, backups with cron example, restore, API table); web README replaces CRA boilerplate.
+
+### Regression fixes found by the baseline comparison
+
+- Branch / commit: BE `phase-2/fix-compression`, FE `phase-2/fix-gate-waterfall`
+- Root cause: (1) Express (ARCH-001) served JS/CSS uncompressed, unlike the Phase 0 static server: 296 KB + 236 KB raw. (2) `DeviceGate` (SEC-001) rendered nothing until `/api/session` answered, adding a round trip before first paint. Lighthouse mobile dropped up to 6 points below Phase 0.
+- Fix: `compression` middleware (new runtime dependency, owner-approved scope "anything may change"); gate renders immediately and switches to the PIN screen only for locked devices.
+- Tests added: BE gzip test; FE "renders the app without waiting for the session check".
+- Verified: Lighthouse re-run (3× median): every page now at or above Phase 0 (see comparison).
+
+### Card link crash after react-router 7 (found by CI)
+
+- Branch / commit: FE `phase-2/fix-card-link`
+- Root cause: the Add Customer card rendered `<Link to={undefined}>`; react-router 7 throws on click. Frontend CI failed for 3 pushes; locally I had filtered test output to the summary line and missed Vitest's "uncaught exception" exit code 1.
+- Fix: cards without a destination render plain text. E2E fixtures now fail any test with an uncaught page error (proven to catch this bug on the old code).
+- Verified: unit exit 0, E2E 46/46 exit 0, CI green. Process change: checks are judged by exit code, not by grepping the summary.

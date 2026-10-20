@@ -6,23 +6,23 @@ Repo: FE = `tailor_Management_REACT`, BE = `tailor_Management_Server`.
 
 | Rank | ID | Title | Area | Severity | Impact | Effort | Risk | Unblocks | Score | Phase | Depends on | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | SEC-001 | Restrict API access on shop Wi-Fi (same origin, allowed origin, shop PIN per device — owner decision) — BE+FE | SEC | High · Override | 5 | 3 | 5 | 3 | 21 | 2 | ARCH-001 | To do |
-| 2 | UX-001 | Detail shows correct status after updates; no stale customer while loading (incl. UX-002) — FE | UX | High · Override | 5 | 5 | 4 | 1 | 20 | 2 | TEST-001 | To do |
-| 3 | UX-005 | Confirm (or undo) before deleting a customer — FE | UX | High · Override | 4 | 5 | 5 | 1 | 19 | 2 | TEST-001 | To do |
-| 4 | SEC-006 | Persistent DB volume, scheduled backup, tested restore — BE/ops | SEC | High · Override | 4 | 5 | 5 | 1 | 19 | 2 | — | To do |
-| 5 | ARCH-001 | API module + configurable/same-origin base URL; Express serves built UI — FE+BE | ARCH | High | 5 | 3 | 4 | 5 | 22 | 2 | — | To do |
-| 6 | TEST-001 | Safety net: API integration tests + 6 E2E flows + seed script — FE+BE | TEST | High | 4 | 3 | 5 | 5 | 21 | 2 | — | To do |
-| 7 | SEC-003 | Server validation: enums, numeric measurement/price types, proper 400s (incl. ARCH-006 numeric part) — BE | SEC | Medium | 4 | 3 | 4 | 3 | 18 | 2 | TEST-001 | To do |
-| 8 | ARCH-005 | Move CRA → Vite + Vitest; remove unused deps (ARCH-004); upgrade runtime libs; add Prettier — FE | ARCH | Medium | 3 | 3 | 4 | 4 | 17 | 2 | TEST-001 (E2E) | To do |
-| 9 | TEST-003 | GitHub Actions CI: lint, build, tests, E2E — FE+BE | TEST | Medium | 3 | 4 | 4 | 3 | 17 | 2 | TEST-001 | To do |
-| 10 | SEC-002 | JSON error middleware, no stack traces, `NODE_ENV=production` — BE | SEC | Medium | 3 | 5 | 4 | 2 | 17 | 2 | — | To do |
-| 11 | UX-003 | Distinct loading / error (retry) / empty states on list, detail, search (incl. PERF-006) — FE | UX | High | 4 | 4 | 3 | 1 | 16 | 2 | ARCH-001 | To do |
-| 12 | UX-004a | Add form: show API errors, success message, close on success, saving state (incl. UX-010) — FE | UX | High | 4 | 4 | 3 | 1 | 16 | 2 | ARCH-001 | To do |
-| 13 | SEC-005 | Upgrade server deps (Express, Mongoose) to current majors; drop deprecated options — BE | SEC | Medium | 3 | 3 | 4 | 2 | 15 | 2 | TEST-001 | To do |
-| 14 | SEC-007 | Request/error logging to rotating file — BE | SEC | Low | 2 | 5 | 3 | 1 | 13 | 2 | SEC-002 | To do |
-| 15 | ARCH-009 | README per repo + "run at the shop" guide (PC, tablets, backup) — FE+BE | ARCH | Low | 2 | 5 | 2 | 2 | 13 | 2 | ARCH-001, SEC-006 | To do |
-| 16 | ARCH-007 | Atomic customer number counter — BE | ARCH | Medium | 2 | 5 | 3 | 1 | 12 | 2 | TEST-001 | To do |
-| 17 | SEC-004 | Security headers, hide `X-Powered-By` — BE | SEC | Low | 1 | 5 | 2 | 1 | 10 | 2 | ARCH-001 | To do |
+| 1 | SEC-001 | Restrict API access on shop Wi-Fi (same origin, allowed origin, shop PIN per device — owner decision) — BE+FE | SEC | High · Override | 5 | 3 | 5 | 3 | 21 | 2 | ARCH-001 | Done (P2: BE 146d9a8, FE 93d05f4) |
+| 2 | UX-001 | Detail shows correct status after updates; no stale customer while loading (incl. UX-002) — FE | UX | High · Override | 5 | 5 | 4 | 1 | 20 | 2 | TEST-001 | Done (P2: FE, with UX-002) |
+| 3 | UX-005 | Confirm (or undo) before deleting a customer — FE | UX | High · Override | 4 | 5 | 5 | 1 | 19 | 2 | TEST-001 | Done (P2: FE 147d738) |
+| 4 | SEC-006 | Persistent DB volume, scheduled backup, tested restore — BE/ops | SEC | High · Override | 4 | 5 | 5 | 1 | 19 | 2 | — | Done (P2: BE 2ff2f6d; restore drill 2026-10-20) |
+| 5 | ARCH-001 | API module + configurable/same-origin base URL; Express serves built UI — FE+BE | ARCH | High | 5 | 3 | 4 | 5 | 22 | 2 | — | Done (P2: BE d4d222c, FE 6dd467c) |
+| 6 | TEST-001 | Safety net: API integration tests + 6 E2E flows + seed script — FE+BE | TEST | High | 4 | 3 | 5 | 5 | 21 | 2 | — | Done (P2: BE 12cf8dd, FE E2E) |
+| 7 | SEC-003 | Server validation: enums, numeric measurement/price types, proper 400s (incl. ARCH-006 numeric part) — BE | SEC | Medium | 4 | 3 | 4 | 3 | 18 | 2 | TEST-001 | Done (P2: BE ce06314, FE 41cff4c) |
+| 8 | ARCH-005 | Move CRA → Vite + Vitest; remove unused deps (ARCH-004); upgrade runtime libs; add Prettier — FE | ARCH | Medium | 3 | 3 | 4 | 4 | 17 | 2 | TEST-001 (E2E) | Done (P2: FE 33a95f9, moved before deps) |
+| 9 | TEST-003 | GitHub Actions CI: lint, build, tests, E2E — FE+BE | TEST | Medium | 3 | 4 | 4 | 3 | 17 | 2 | TEST-001 | Done (P2: CI both repos, all blocking) |
+| 10 | SEC-002 | JSON error middleware, no stack traces, `NODE_ENV=production` — BE | SEC | Medium | 3 | 5 | 4 | 2 | 17 | 2 | — | Done (P2: BE c6f97d7) |
+| 11 | UX-003 | Distinct loading / error (retry) / empty states on list, detail, search (incl. PERF-006) — FE | UX | High | 4 | 4 | 3 | 1 | 16 | 2 | ARCH-001 | Done (P2: FE 9f2dc5e, + UX-011) |
+| 12 | UX-004a | Add form: show API errors, success message, close on success, saving state (incl. UX-010) — FE | UX | High | 4 | 4 | 3 | 1 | 16 | 2 | ARCH-001 | Done (P2: FE b32e2a6, + UX-010) |
+| 13 | SEC-005 | Upgrade server deps (Express, Mongoose) to current majors; drop deprecated options — BE | SEC | Medium | 3 | 3 | 4 | 2 | 15 | 2 | TEST-001 | Done (P2: see phase-2/upgrades.md) |
+| 14 | SEC-007 | Request/error logging to rotating file — BE | SEC | Low | 2 | 5 | 3 | 1 | 13 | 2 | SEC-002 | Done (P2: BE 6c41c8f) |
+| 15 | ARCH-009 | README per repo + "run at the shop" guide (PC, tablets, backup) — FE+BE | ARCH | Low | 2 | 5 | 2 | 2 | 13 | 2 | ARCH-001, SEC-006 | Done (P2: BE 99fcf2e, FE c3d9c8f) |
+| 16 | ARCH-007 | Atomic customer number counter — BE | ARCH | Medium | 2 | 5 | 3 | 1 | 12 | 2 | TEST-001 | Done (P2: BE be7447f) |
+| 17 | SEC-004 | Security headers, hide `X-Powered-By` — BE | SEC | Low | 1 | 5 | 2 | 1 | 10 | 2 | ARCH-001 | Done (P2: BE) |
 | 18 | UI-003 | Component library + migrate all screens (Button, TextField, RadioGroup, Dialog, ConfirmDialog, StatusBadge, Toast, Empty/Error/Loading, Card); covers A11Y-003/004/005/008, RESP-006, K-009 — FE | UI | Medium | 5 | 2 | 3 | 5 | 20 | 3 | UI-001 | To do |
 | 19 | UI-001 | New brand direction + design tokens (color, type, spacing, radius, shadow); accessible status colors (A11Y-002) — FE | UI | Medium | 4 | 3 | 2 | 5 | 18 | 3 | owner approval | To do |
 | 20 | UX-008 | AppShell: header/nav/main, active state, page `h1`, 404, start on dashboard, remove Logout + Welcome (FEAT-001, UI-006, A11Y-006, RESP-003, RESP-005) — FE | UX | Medium | 4 | 4 | 1 | 4 | 17 | 3 | UI-003 | To do |
@@ -33,7 +33,7 @@ Repo: FE = `tailor_Management_REACT`, BE = `tailor_Management_Server`.
 | 25 | RESP-004 | Fluid form and detail layouts, labels above inputs, fieldset/legend groups (incl. A11Y-009) — FE | RESP | High | 4 | 4 | 1 | 2 | 15 | 3 | UI-003 | To do |
 | 26 | UI-005 | Replace photos with brand icons/illustrations; correct alt (A11Y-007, PERF-003) — FE | UI | Low | 2 | 5 | 1 | 1 | 11 | 3 | UI-001 | To do |
 | 27 | PERF-002 | Hero image: close (Welcome removed) or ship ≤100 KB WebP with srcset — FE | PERF | High | 3 | 5 | 1 | 1 | 13 | 4 | UX-008 | To do |
-| 28 | PERF-008 | Production serving: long cache headers + gzip/brotli for static assets — BE | PERF | Low | 3 | 4 | 1 | 1 | 12 | 4 | ARCH-001 | To do |
+| 28 | PERF-008 | Production serving: long cache headers + gzip/brotli for static assets — BE | PERF | Low | 3 | 4 | 1 | 1 | 12 | 4 | ARCH-001 | In progress (compression added in P2; cache headers left) |
 | 29 | PERF-009 | Lighthouse CI budgets (mobile perf ≥ 90, LCP < 2.5 s) — FE | PERF | Low | 2 | 4 | 2 | 1 | 11 | 4 | TEST-003 | To do |
 | 30 | PERF-004 | Route-level code splitting (form/detail views) — FE | PERF | Low | 2 | 4 | 1 | 1 | 10 | 4 | ARCH-005 | To do |
 | 31 | PERF-005 | Trim CSS (unused Bootstrap) and remaining heavy deps — FE | PERF | Low | 2 | 3 | 1 | 1 | 9 | 4 | ARCH-003 | To do |
@@ -49,6 +49,14 @@ Repo: FE = `tailor_Management_REACT`, BE = `tailor_Management_Server`.
 | 41 | NEW-001 | Edit customer details with measurement history — FE+BE | NEW | — | 5 | 3 | 1 | 1 | 15 | 6 | UX-004b | To do |
 | 42 | NEW-003 | Order history per customer (due date, advance + balance) — FE+BE | NEW | — | 4 | 1 | 1 | 2 | 12 | 6 | ARCH-006, NEW-001 | To do |
 | 43 | NEW-004 | Printable A4/A5 bill (no measurements) — FE | NEW | — | 3 | 3 | 1 | 1 | 11 | 6 | NEW-003 | To do |
+
+### Added during Phase 2
+
+| Rank | ID | Title | Area | Severity | Impact | Effort | Risk | Unblocks | Score | Phase | Depends on | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| — | UX-011 | Enter in the search box reloaded the page — FE | UX | Medium | 3 | 5 | 2 | 1 | 14 | 2 | — | Done (P2: FE 9f2dc5e) |
+| — | DEP-001 | Decide React 19 (+ react-router 8, needs React 19) together with the Phase 3 UI library choice; React 19 adds ~23 KB gz — FE | ARCH | Low | 2 | 3 | 2 | 2 | 11 | 3 | UI-003 decision | To do |
+| — | DEP-002 | Optional dev-tool majors: ESLint 10, globals 17, mongodb-memory-server 11, jest-dom 7, react-hooks plugin 7 (clears the lint-only brace-expansion advisory) — FE+BE | ARCH | Low | 1 | 4 | 2 | 1 | 9 | 4 | — | To do |
 
 ## Phase 0 known issues → backlog
 

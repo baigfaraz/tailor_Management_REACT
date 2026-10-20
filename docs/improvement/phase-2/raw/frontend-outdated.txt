@@ -1,0 +1,9 @@
+Package                    Current   Wanted   Latest  Location                                Depended by
+@eslint/js                  9.39.5   9.39.5   10.0.1  node_modules/@eslint/js                 frontend
+@testing-library/jest-dom    6.6.2    6.6.2    7.0.1  node_modules/@testing-library/jest-dom  frontend
+eslint                      9.39.5   9.39.5  10.13.0  node_modules/eslint                     frontend
+eslint-plugin-react-hooks    5.0.0    5.0.0    7.1.1  node_modules/eslint-plugin-react-hooks  frontend
+globals                    15.15.0  15.15.0  17.13.0  node_modules/globals                    frontend
+react                       18.3.1   18.3.1   19.3.1  node_modules/react                      frontend
+react-dom                   18.3.1   18.3.1   19.3.1  node_modules/react-dom                  frontend
+react-router                7.18.4   7.18.4    8.5.0  node_modules/react-router               frontend

@@ -1,0 +1,19 @@
+
+> tailor-management-server@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/farazbaig/Documents/AxtraStudios/TailorManagment/backend
+
+(node:90063) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 listening listeners added to [Server]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:90063) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [Server]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+
+ Test Files  8 passed (8)
+      Tests  76 passed (76)
+   Start at  18:22:54
+   Duration  6.28s (tests 78%, import 21%)
+
+    Isolate  8 workers spawned · ~65ms startup each (spawn + environment, per file)
+             at least ~455ms faster with isolate: false — reuses workers across files instead of one per file
+

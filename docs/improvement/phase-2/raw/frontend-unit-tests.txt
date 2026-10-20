@@ -1,0 +1,39 @@
+
+> tailor@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend
+
+Error: boom
+    at Broken (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/src/components/ErrorBoundary.test.jsx:6:9)
+    at renderWithHooks (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:20103:13)
+    at beginWork (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/generated/idl/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:378:16)
+    at invokeEventListeners (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:320:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:269:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:137:17)
+Error: boom
+    at Broken (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/src/components/ErrorBoundary.test.jsx:6:9)
+    at renderWithHooks (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:20103:13)
+    at beginWork (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/generated/idl/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:378:16)
+    at invokeEventListeners (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:320:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:269:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/farazbaig/Documents/AxtraStudios/TailorManagment/frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:137:17)
+
+ Test Files  10 passed (10)
+      Tests  31 passed (31)
+   Start at  18:23:04
+   Duration  2.24s (environment 52%, tests 24%, setup 10%, import 10%, transform 3%, worker 1%)
+
+Environment  jsdom was created 10 times · 6.66s total, 52% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
