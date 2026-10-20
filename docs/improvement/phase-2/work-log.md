@@ -55,3 +55,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: BE `test/session.test.js` (15: 401 on all 6 endpoints, wrong/missing PIN, cookie flags, forget device, forged cookie, PIN change, lockout, CORS allowlist), `test/env.test.js` (3); CORS characterization test flipped. FE E2E `device-pin.spec.js` (unlock + persists after reload; wrong PIN error); all E2E fixtures unlock via the API.
 - Verified: BE 41/41 ✅ lint ✅; FE lint ✅ build ✅ E2E 44/44 incl. visual ✅ (desktop + tablet); real `.env` start-up ✅; missing env → clear error ✅.
 - Side effects / follow-ups: the owner's local `.env` got `SHOP_PIN=1234` (temporary, owner to change) and a random `SESSION_SECRET`. The E2E server briefly read the dev `.env` PIN while developing this; fixed by removing dotenv from `db.js` and fixing E2E values.
+
+### SEC-006: Backups and a tested restore
+
+- Branch / commit: BE `phase-2/sec-006-backups`
+- Root cause: free Atlas M0 has no backups; nothing exported the data.
+- Fix: `src/backup/backup.js` exports every collection as canonical Extended JSON (keeps `_id`, dates, types) with a manifest; prunes to the newest `BACKUP_KEEP` (30). `npm run backup` (reads `.env`), `npm run restore -- <folder> [--uri <target>] --yes` (dry run without `--yes`). `backups/` is git-ignored.
+- Tests added: BE `test/backup.test.js` (round trip identical incl. ids/dates/booleans; pruning).
+- Verified: BE 43/43 ✅ lint ✅. Restore drill on 2026-10-20: backup of Atlas `tailor` (2 customers, read-only) restored into a throwaway in-memory database → 2 documents; Atlas was not written.
+- Side effects / follow-ups: scheduling (daily cron/launchd on the shop PC) and copying to a second location are documented in ARCH-009 README. Backup files contain customer data; keep them private.

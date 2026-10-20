@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
-import AllCustomer from "./components/AllCustomer.js";
+import AllCustomer from "./components/AllCustomer";
 import SearchScreen from "./components/SearchScreen";
 import DeviceGate from "./components/DeviceGate";
 

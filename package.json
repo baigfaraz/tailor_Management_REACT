@@ -3,55 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.5",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.15.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --max-warnings=0 src",
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "lint": "eslint --max-warnings=0 .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:e2e": "playwright test --grep-invert @visual",
-    "test:visual": "playwright test --grep @visual"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "test:visual": "playwright test --grep @visual",
+    "dev": "vite",
+    "preview": "vite preview --port 3000",
+    "test:watch": "vitest"
   },
   "devDependencies": {
+    "@eslint/js": "9.13.0",
     "@playwright/test": "1.48.2",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.2",
+    "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "14.5.2",
+    "@vitejs/plugin-react": "4.3.3",
+    "eslint": "9.13.0",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-react-refresh": "0.4.14",
+    "globals": "15.11.0",
+    "jsdom": "25.0.1",
     "prettier": "3.3.3",
-    "serve": "14.2.4"
-  },
-  "proxy": "http://localhost:5000"
+    "vite": "5.4.10",
+    "vitest": "2.1.4"
+  }
 }

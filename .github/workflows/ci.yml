@@ -17,16 +17,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run format:check
-      - name: Unit tests
-        # Non-blocking until the broken CRA test setup is replaced in TEST-001/TEST-002.
-        continue-on-error: true
-        run: npm test -- --watchAll=false
-        env:
-          CI: true
+      - run: npm test
       - run: npm run build
-        env:
-          # CRA treats warnings as errors when CI=true; keep that strictness.
-          CI: true
 
   e2e:
     runs-on: ubuntu-latest
