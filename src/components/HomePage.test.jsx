@@ -19,7 +19,7 @@ describe("HomePage", () => {
       </MemoryRouter>,
     );
 
-    await userEvent.click(screen.getByRole("link", { name: "Add Customer" }));
+    await userEvent.click(screen.getByRole("button", { name: "Add Customer" }));
     await userEvent.click(screen.getByRole("button", { name: "Add Detail" }));
     const confirm = screen
       .getByText("Click on confirm if you want to add!")

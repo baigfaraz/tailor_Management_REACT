@@ -18,9 +18,14 @@ export default function MainCard({ image, title, button, functionName, path }) {
             className="cardButton"
             onClick={functionName}
           >
-            <Link to={path} className="GetStartedLink">
-              {button}
-            </Link>
+            {/* Only cards with a destination are links; react-router 7 throws on a Link without `to`. */}
+            {path ? (
+              <Link to={path} className="GetStartedLink">
+                {button}
+              </Link>
+            ) : (
+              button
+            )}
           </Button>
         </Card.Body>
       </Card>

@@ -5,7 +5,7 @@ const { test, expect } = require("./fixtures");
 
 async function openAddCustomer(page) {
   await page.goto("/Home");
-  await page.getByRole("link", { name: "Add Customer" }).click();
+  await page.getByRole("button", { name: "Add Customer" }).click();
   await expect(
     page.getByRole("dialog").getByText("Add Customer Details"),
   ).toBeVisible();

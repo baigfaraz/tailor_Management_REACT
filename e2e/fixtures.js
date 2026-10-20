@@ -55,12 +55,16 @@ const test = base.test.extend({
     void api; // ensure the database is reset before the page loads
     // Defense in depth: nothing may reach the dev API on port 5000 (real Atlas data).
     await page.route("http://localhost:5000/**", (route) => route.abort());
+    // Any uncaught error in the page fails the test.
+    const pageErrors = [];
+    page.on("pageerror", (error) => pageErrors.push(error.message));
     if (unlocked) {
       // page.request shares the browser context's cookies.
       const res = await page.request.post(SESSION, { data: { pin: SHOP_PIN } });
       base.expect(res.status()).toBe(200);
     }
     await use(page);
+    base.expect(pageErrors, "uncaught errors in the page").toEqual([]);
   },
 });
 
