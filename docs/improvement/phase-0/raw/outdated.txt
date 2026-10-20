@@ -1,0 +1,15 @@
+Package                      Current   Wanted   Latest  Location                                  Depended by  Package Type  Homepage
+@emotion/react               11.11.1  11.14.0  11.14.0  node_modules/@emotion/react               frontend     dependencies  https://github.com/emotion-js/emotion/tree/main#readme
+@emotion/styled              11.11.0  11.14.1  11.14.1  node_modules/@emotion/styled              frontend     dependencies  https://github.com/emotion-js/emotion/tree/main#readme
+@mui/material                 5.14.5   5.18.0    9.5.0  node_modules/@mui/material                frontend     dependencies  https://mui.com/material-ui/
+@testing-library/jest-dom     5.17.0   5.17.0    6.9.1  node_modules/@testing-library/jest-dom    frontend     dependencies  https://github.com/testing-library/jest-dom#readme
+@testing-library/react        13.4.0   13.4.0   16.3.3  node_modules/@testing-library/react       frontend     dependencies  https://github.com/testing-library/react-testing-library#readme
+@testing-library/user-event   13.5.0   13.5.0   14.6.8  node_modules/@testing-library/user-event  frontend     dependencies  https://github.com/testing-library/user-event#readme
+axios                          1.4.0   1.20.0   1.20.0  node_modules/axios                        frontend     dependencies  https://axios-http.com
+bootstrap                      5.3.1    5.3.8    5.3.8  node_modules/bootstrap                    frontend     dependencies  https://getbootstrap.com/
+react                         18.2.0   18.3.1   19.3.1  node_modules/react                        frontend     dependencies  https://react.dev/
+react-bootstrap                2.8.0  2.10.10  2.10.10  node_modules/react-bootstrap              frontend     dependencies  https://react-bootstrap.github.io/
+react-bootstrap-icons         1.10.3   1.11.6   1.11.6  node_modules/react-bootstrap-icons        frontend     dependencies  https://github.com/ismamz/react-bootstrap-icons#readme
+react-dom                     18.2.0   18.3.1   19.3.1  node_modules/react-dom                    frontend     dependencies  https://react.dev/
+react-router-dom              6.15.0   6.30.6   7.18.4  node_modules/react-router-dom             frontend     dependencies  https://github.com/remix-run/react-router#readme
+web-vitals                     2.1.4    2.1.4    6.2.3  node_modules/web-vitals                   frontend     dependencies  https://github.com/GoogleChrome/web-vitals#readme

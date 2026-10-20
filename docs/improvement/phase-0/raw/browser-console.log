@@ -1,0 +1,6 @@
+[http 404] http://localhost:5001/api/customerDetail/9999
+[error] http://localhost:3000/Home/Search Failed to load resource: the server responded with a status of 404 (Not Found)
+[error] http://localhost:3000/Home/Search Error fetching data: fo
+[error] http://localhost:3000/Home/AllCustomer Access to XMLHttpRequest at 'http://localhost:5000/api/customerDetail/somedata' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+[error] http://localhost:3000/Home/AllCustomer Error fetching data: fo
+[error] http://localhost:3000/Home/AllCustomer Failed to load resource: net::ERR_FAILED

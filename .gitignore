@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# env (any .env file; names go in .env.example)
+.env
+
+# editors
+.idea/
+.vscode/
+
+# logs (keep Phase 0+ raw logs in docs)
+*.log
+!docs/improvement/**/*.log
