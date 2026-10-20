@@ -3,11 +3,14 @@ import Header from "./Header";
 import ShowDetailModal from "./ShowDetailModal";
 import axios from "axios";
 import { Trash } from "react-bootstrap-icons";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const AllCustomer = () => {
   const [showModal, setShowModal] = useState(false);
   const [someData, setSomeData] = useState([]);
   const [customerData, setCustomerData] = useState({});
+  const [customerToDelete, setCustomerToDelete] = useState(null);
 
   useEffect(() => {
     getSomeData();
@@ -159,7 +162,7 @@ const AllCustomer = () => {
                       size={18}
                       className="trash"
                       onClick={() => {
-                        handleDeleteCustomer(customer.customer_id);
+                        setCustomerToDelete(customer);
                       }}
                     />
                   </td>
@@ -172,6 +175,39 @@ const AllCustomer = () => {
             <text>No data availaible to show!</text>
           </div>
         )}
+        <Modal
+          show={customerToDelete !== null}
+          onHide={() => setCustomerToDelete(null)}
+        >
+          <Modal.Header className="customModalHeader">
+            <Modal.Title className="customModalTitle">
+              Delete customer
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="customModalBody">
+            Delete {customerToDelete?.customer_name} (Customer No{" "}
+            {customerToDelete?.customer_id})? This cannot be undone.
+          </Modal.Body>
+          <Modal.Footer className="customModalFooter">
+            <Button
+              variant="secondary"
+              onClick={() => setCustomerToDelete(null)}
+              className="button"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              className="button"
+              onClick={async () => {
+                await handleDeleteCustomer(customerToDelete.customer_id);
+                setCustomerToDelete(null);
+              }}
+            >
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <ShowDetailModal
           show={showModal}
           handleClose={handleCloseModal}

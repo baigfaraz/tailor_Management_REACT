@@ -224,7 +224,11 @@ test.describe("Detail data freshness (UX-002)", () => {
 });
 
 test.describe("6. Delete customer", () => {
-  test("removes the customer from the list and database", async ({
+  // Trash icon has no accessible name yet (A11Y-001); select it by position.
+  const trash = (page, name) =>
+    customerRow(page, name).locator("td").last().locator("svg");
+
+  test("asks for confirmation, then removes the customer", async ({
     page,
     api,
   }) => {
@@ -232,18 +236,33 @@ test.describe("6. Delete customer", () => {
     await api.createCustomer({ customer_name: "Sara Khan" });
     await page.goto("/Home/AllCustomer");
 
-    // Trash icon has no accessible name yet (A11Y-001); select it by position.
-    await customerRow(page, "Hina Shah")
-      .locator("td")
-      .last()
-      .locator("svg")
-      .click();
+    await trash(page, "Hina Shah").click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toContainText("Hina Shah");
+    expect(await api.listCustomers()).toHaveLength(2);
+
+    await dialog.getByRole("button", { name: "Delete" }).click();
 
     await expect(customerRow(page, "Hina Shah")).toHaveCount(0);
     await expect(customerRow(page, "Sara Khan")).toBeVisible();
     expect((await api.listCustomers()).map((c) => c.customer_name)).toEqual([
       "Sara Khan",
     ]);
+  });
+
+  test("cancel keeps the customer", async ({ page, api }) => {
+    await api.createCustomer({ customer_name: "Hina Shah" });
+    await page.goto("/Home/AllCustomer");
+
+    await trash(page, "Hina Shah").click();
+    await page
+      .getByRole("dialog")
+      .getByRole("button", { name: "Cancel" })
+      .click();
+
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await expect(customerRow(page, "Hina Shah")).toBeVisible();
+    expect(await api.listCustomers()).toHaveLength(1);
   });
 });
 

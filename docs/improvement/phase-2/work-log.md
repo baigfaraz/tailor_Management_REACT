@@ -28,3 +28,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: E2E "detail shows the stored status after another customer was updated (UX-001)" (was `test.fail`), "never shows the previous customer while the next one loads (UX-002)" (non-retrying check during a 1.5 s delayed response).
 - Verified: tests ✅ lint ✅ build ✅ E2E 38/38 incl. visual ✅ (desktop + tablet).
 - Side effects / follow-ups: on a slow network the click now waits for data before the modal appears; UX-003 adds a loading state.
+
+### UX-005: Confirm before deleting a customer
+
+- Branch / commit: FE `phase-2/ux-005-delete-confirm`
+- Root cause: trash icon called `DELETE` directly; confirmation existed only for status changes.
+- Fix: confirmation dialog naming the customer and number, with Cancel / Delete, styled with the existing modal classes.
+- Tests added: E2E "asks for confirmation, then removes the customer", "cancel keeps the customer".
+- Verified: tests ✅ lint ✅ build ✅ E2E 40/40 incl. visual ✅ (desktop + tablet).
+- Side effects / follow-ups: trash icon is still not keyboard reachable (A11Y-001, Phase 3). Soft delete/undo can come with SEC-006 thinking later.
