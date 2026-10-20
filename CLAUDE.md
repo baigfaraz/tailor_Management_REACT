@@ -60,9 +60,9 @@ Phase 1 (system-wide, both repos): `docs/improvement/phase-1/audit-report.md`, b
 2. `src/components/DetailModal.js` (only create path)
 3. `src/App.css` (global, overrides Bootstrap `.row`/`.col`)
 4. `src/components/AllCustomer.js` (delete without confirm)
-5. server `backend/controllers/customerDetailController.js`
-6. server `backend/models/customerDetailModel.js`
-7. server `backend/server.js`
+5. server `src/controllers/customerDetailController.js`
+6. server `src/models/customerDetailModel.js`
+7. server `src/server.js`
 8. `src/components/SearchScreen.js`
 9. `src/components/Card.js`
 10. `src/App.js`
