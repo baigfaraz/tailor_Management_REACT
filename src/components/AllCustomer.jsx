@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import ShowDetailModal from "./ShowDetailModal";
 import { deleteCustomer, getCustomer, listCustomers } from "../api/customers";
+import { errorMessage } from "../api/errors";
 import { Trash } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -11,42 +12,61 @@ const AllCustomer = () => {
   const [someData, setSomeData] = useState([]);
   const [customerData, setCustomerData] = useState({});
   const [customerToDelete, setCustomerToDelete] = useState(null);
+  // "loading" | "error" | "ready" (UX-003)
+  const [listStatus, setListStatus] = useState("loading");
+  const [listError, setListError] = useState("");
+  const [actionError, setActionError] = useState("");
+  const [deleteError, setDeleteError] = useState("");
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     getSomeData();
   }, []);
 
-  useEffect(() => {
-    if (someData) {
-      // console.log(someData);
-    }
-  }, [someData]);
-
+  // Reloads the list. A failed refresh keeps the rows already on screen.
   const getSomeData = async () => {
     try {
       setSomeData(await listCustomers());
+      setListStatus("ready");
     } catch (error) {
-      console.error("Error fetching data:", error);
+      setListError(errorMessage(error, "Could not load customers."));
+      setListStatus((status) => (status === "ready" ? status : "error"));
     }
   };
 
+  const retryLoad = () => {
+    setListStatus("loading");
+    getSomeData();
+  };
+
   const getCustomerDetail = async (id) => {
+    setActionError("");
     try {
       setCustomerData(await getCustomer(id));
       return true;
     } catch (error) {
-      console.error("Error fetching data:", error);
+      setActionError(errorMessage(error, "Could not open this customer."));
       return false;
     }
   };
 
   const handleDeleteCustomer = async (id) => {
+    setDeleting(true);
+    setDeleteError("");
     try {
       await deleteCustomer(id);
+      setCustomerToDelete(null);
       getSomeData();
     } catch (error) {
-      console.log("Error", error);
+      setDeleteError(errorMessage(error, "Could not delete this customer."));
+    } finally {
+      setDeleting(false);
     }
+  };
+
+  const closeDeleteDialog = () => {
+    setCustomerToDelete(null);
+    setDeleteError("");
   };
 
   const handleOpenModal = () => {
@@ -74,7 +94,23 @@ const AllCustomer = () => {
         ""
       )}
       <div className="table-container">
-        {someData.length > 0 ? (
+        {actionError && (
+          <p role="alert" className="dataNotFound">
+            {actionError}
+          </p>
+        )}
+        {listStatus === "loading" ? (
+          <div className="nodataText" role="status">
+            <text>Loading customers…</text>
+          </div>
+        ) : listStatus === "error" ? (
+          <div className="nodataText" role="alert">
+            <text>{listError}</text>
+            <Button className="button ms-3" onClick={retryLoad}>
+              Retry
+            </Button>
+          </div>
+        ) : someData.length > 0 ? (
           <table className="custom-table">
             <thead className="table-header">
               <tr>
@@ -167,10 +203,7 @@ const AllCustomer = () => {
             <text>No data availaible to show!</text>
           </div>
         )}
-        <Modal
-          show={customerToDelete !== null}
-          onHide={() => setCustomerToDelete(null)}
-        >
+        <Modal show={customerToDelete !== null} onHide={closeDeleteDialog}>
           <Modal.Header className="customModalHeader">
             <Modal.Title className="customModalTitle">
               Delete customer
@@ -179,11 +212,16 @@ const AllCustomer = () => {
           <Modal.Body className="customModalBody">
             Delete {customerToDelete?.customer_name} (Customer No{" "}
             {customerToDelete?.customer_id})? This cannot be undone.
+            {deleteError && (
+              <p role="alert" className="dataNotFound">
+                {deleteError}
+              </p>
+            )}
           </Modal.Body>
           <Modal.Footer className="customModalFooter">
             <Button
               variant="secondary"
-              onClick={() => setCustomerToDelete(null)}
+              onClick={closeDeleteDialog}
               className="button"
             >
               Cancel
@@ -191,10 +229,8 @@ const AllCustomer = () => {
             <Button
               variant="primary"
               className="button"
-              onClick={async () => {
-                await handleDeleteCustomer(customerToDelete.customer_id);
-                setCustomerToDelete(null);
-              }}
+              disabled={deleting}
+              onClick={() => handleDeleteCustomer(customerToDelete.customer_id)}
             >
               Delete
             </Button>

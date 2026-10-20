@@ -103,14 +103,21 @@ test.describe("2. View customers and detail", () => {
     await expect(page.getByText("No data availaible to show!")).toBeVisible();
   });
 
-  test("current bug (UX-003): an unreachable API looks like an empty list", async ({
+  test("an unreachable API shows an error with Retry, not an empty list (UX-003)", async ({
     page,
     api,
   }) => {
-    await api.createCustomer();
+    await api.createCustomer({ customer_name: "Ali Raza" });
     await page.route("**/api/customerDetail/**", (route) => route.abort());
     await page.goto("/Home/AllCustomer");
-    await expect(page.getByText("No data availaible to show!")).toBeVisible();
+
+    const alert = page.getByRole("alert");
+    await expect(alert).toContainText("Could not reach the shop computer");
+    await expect(page.getByText("No data availaible to show!")).toHaveCount(0);
+
+    await page.unroute("**/api/customerDetail/**");
+    await alert.getByRole("button", { name: "Retry" }).click();
+    await expect(page.getByRole("row", { name: /Ali Raza/ })).toBeVisible();
   });
 });
 
@@ -120,6 +127,16 @@ test.describe("3. Search by ID", () => {
     await page.goto("/Home/Search");
     await page.getByPlaceholder("Enter Customer-ID").fill("1");
     await page.getByRole("button", { name: "Check" }).click();
+    await expect(
+      page.getByRole("dialog").getByText("Usman Tariq"),
+    ).toBeVisible();
+  });
+
+  test("searches when Enter is pressed (UX-011)", async ({ page, api }) => {
+    await api.createCustomer({ customer_name: "Usman Tariq" });
+    await page.goto("/Home/Search");
+    await page.getByPlaceholder("Enter Customer-ID").fill("1");
+    await page.getByPlaceholder("Enter Customer-ID").press("Enter");
     await expect(
       page.getByRole("dialog").getByText("Usman Tariq"),
     ).toBeVisible();

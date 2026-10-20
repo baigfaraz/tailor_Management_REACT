@@ -82,3 +82,12 @@ One entry per backlog item. Both repos: FE = `tailor_Management_REACT`, BE = `ta
 - Tests added: `DeviceGate.test.jsx` (4) replaces the stale CRA `App.test.js`. Unit tests blocking in CI.
 - Verified: lint ✅ unit 4/4 ✅ build 1.9 s (was 16.4 s) ✅ E2E 44/44 incl. visual (identical screenshots) ✅; dev server + proxy checked.
 - Side effects / follow-ups: done earlier than the skill's default order (before dependency step) so the reliability fixes get component tests. The owner's running CRA dev server must be restarted with `npm install && npm start` (now Vite).
+
+### UX-003 (+ UX-011): Loading, error and empty states
+
+- Branch / commit: FE `phase-2/ux-003-states`
+- Root cause: one `someData.length > 0` check drove every state and all `catch` blocks only logged, so loading, offline and empty looked the same; search showed "Customer Not Found." for every failure; failed status/delete actions closed silently. New bug found while testing (UX-011): pressing Enter in the search box submitted the form and reloaded the page.
+- Fix: `src/api/errors.js` maps errors to actionable messages (offline vs server message). List: explicit loading / error + Retry / empty / ready; a failed refresh keeps rows on screen; "could not open" message. Search: 404/400 → not found, other errors explained, button disabled while searching, Enter handled with `preventDefault`. Status change and delete keep their dialog open with the error and disable the action button while running.
+- Tests added: component tests `AllCustomer.test.jsx` (5), `SearchScreen.test.jsx` (4), `ShowDetailModal.test.jsx` (3); 9 failed on the old code. E2E: UX-003 test flipped to "error with Retry", new "searches when Enter is pressed".
+- Verified: lint ✅ unit 16/16 ✅ build ✅ E2E 46/46 incl. visual ✅ (desktop + tablet).
+- Side effects / follow-ups: messages use existing styles; Phase 3 designs proper Empty/Error/Loading components (UI-003).

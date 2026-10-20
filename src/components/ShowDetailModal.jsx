@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { updateOrderStatus, updatePaymentStatus } from "../api/customers";
+import { errorMessage } from "../api/errors";
 
 export default function ShowDetailModal({
   show,
@@ -14,48 +15,45 @@ export default function ShowDetailModal({
 }) {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [confirmationAction, setConfirmationAction] = useState(null);
+  const [updateError, setUpdateError] = useState("");
+  const [updating, setUpdating] = useState(false);
 
   const handleOpenConfirmationModal = (action) => {
     setConfirmationAction(action);
+    setUpdateError("");
     setShowConfirmationModal(true);
   };
 
   const handleCloseConfirmationModal = () => {
     setShowConfirmationModal(false);
     setConfirmationAction(null);
+    setUpdateError("");
   };
 
+  // On failure the confirmation stays open with the error (UX-003).
   const handleConfirmAction = async () => {
-    if (confirmationAction === "orderComplete") {
-      await handleOrderComplete();
-    } else if (confirmationAction === "completePayment") {
-      await handlePaymentComplete();
-    }
-    handleCloseConfirmationModal();
-  };
-
-  const handlePaymentComplete = async () => {
-    const newStatus =
-      data.customer_paymentStatus === "Pending" ? "Complete" : "Pending";
-
+    const toggle = (status) => (status === "Pending" ? "Complete" : "Pending");
+    setUpdating(true);
+    setUpdateError("");
     try {
-      await updatePaymentStatus(data.customer_id, newStatus);
+      if (confirmationAction === "orderComplete") {
+        await updateOrderStatus(
+          data.customer_id,
+          toggle(data.customer_orderStatus),
+        );
+      } else if (confirmationAction === "completePayment") {
+        await updatePaymentStatus(
+          data.customer_id,
+          toggle(data.customer_paymentStatus),
+        );
+      }
+      handleCloseConfirmationModal();
+      handleClose();
     } catch (error) {
-      console.error("Error in updating data:", error);
+      setUpdateError(errorMessage(error, "Could not update the status."));
+    } finally {
+      setUpdating(false);
     }
-    handleClose();
-  };
-
-  const handleOrderComplete = async () => {
-    const newStatus =
-      data.customer_orderStatus === "Pending" ? "Complete" : "Pending";
-
-    try {
-      await updateOrderStatus(data.customer_id, newStatus);
-    } catch (error) {
-      console.error("Error in updating data:", error);
-    }
-    handleClose();
   };
 
   return (
@@ -245,6 +243,11 @@ export default function ShowDetailModal({
         </Modal.Header>
         <Modal.Body className="customModalBody">
           Are you sure you want to proceed?
+          {updateError && (
+            <p role="alert" className="dataNotFound">
+              {updateError}
+            </p>
+          )}
         </Modal.Body>
         <Modal.Footer className="customModalFooter">
           <Button
@@ -257,6 +260,7 @@ export default function ShowDetailModal({
           <Button
             variant="primary"
             className="button"
+            disabled={updating}
             onClick={handleConfirmAction}
           >
             Confirm
