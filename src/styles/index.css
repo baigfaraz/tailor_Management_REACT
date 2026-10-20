@@ -11,6 +11,8 @@
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+/* The dev-only playground must not add CSS to production builds. */
+@source not "../design-system";
 
 @import "@fontsource-variable/lexend/index.css";
 @import "@fontsource-variable/fraunces/index.css";
