@@ -4,7 +4,9 @@ import Form from "react-bootstrap/Form";
 import { DEVICE_LOCKED_EVENT } from "../api/client";
 import { getSession, unlockDevice } from "../api/session";
 
-// Shows the shop PIN screen until this device is unlocked (SEC-001).
+// Shows the shop PIN screen when this device is not unlocked (SEC-001).
+// The app renders straight away (no wait for the session check), because the
+// server protects the data; a locked device gets 401s and sees the PIN screen.
 // Minimal styling with existing classes; Phase 3 designs it properly.
 export default function DeviceGate({ children }) {
   const [status, setStatus] = useState("checking");
@@ -39,8 +41,7 @@ export default function DeviceGate({ children }) {
     }
   };
 
-  if (status === "unlocked") return children;
-  if (status === "checking") return null;
+  if (status !== "locked") return children;
 
   return (
     <main className="adjustSearchScreen">

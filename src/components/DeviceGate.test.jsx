@@ -20,6 +20,12 @@ const renderGate = () =>
 describe("DeviceGate", () => {
   beforeEach(() => vi.resetAllMocks());
 
+  it("renders the app without waiting for the session check", () => {
+    getSession.mockReturnValue(new Promise(() => {}));
+    renderGate();
+    expect(screen.getByText("App content")).toBeInTheDocument();
+  });
+
   it("shows the app when the device is unlocked", async () => {
     getSession.mockResolvedValue({ unlocked: true });
     renderGate();
